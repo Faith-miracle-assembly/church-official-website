@@ -411,7 +411,7 @@ body {
 }
 
 .connect-row {
-  background-color: #fff;
+  background-color: #ffffff00;
   padding: 60px 30px;
   text-align: center;
 }
@@ -449,6 +449,58 @@ body {
   display: block;
 }
 
+.lead-pastor-section {
+  width: 100%;
+  margin: 60px 0;
+  background-image: url('http://127.0.0.1:5500/Images/image2.jpg'); /* ✅ Your background image */
+  background-size: cover;
+  background-position: center;
+  padding: 80px 30px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.pastor-bg {
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pastor-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.pastor-content h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #f9f9f9;
+}
+
+.pastor-content p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.learn-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #e74c3c; /* TEC-style red accent */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.learn-link:hover {
+  background-color: #c0392b;
+}
 
 
 
