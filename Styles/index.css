@@ -512,6 +512,8 @@ body {
   text-align: center;
   font-size: 0.9rem;
   border-top: 1px solid #ddd;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .footer-nav {
