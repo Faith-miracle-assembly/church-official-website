@@ -503,8 +503,6 @@ body {
 }
 
 
-
-/* Footer */
 .site-footer {
   background-color: #01141f;
   color: #f0eded;
@@ -531,6 +529,22 @@ body {
 .divider {
   color: #999;
 }
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons a {
+  margin: 0 6px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
 
 /* Hamburger icon - hidden by default */
 .hamburger {
