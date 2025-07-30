@@ -580,11 +580,11 @@ body {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.568);
+    background: rgba(0, 0, 0, 0.712);
     position: absolute;
     top: 0px;
-    right: 1px;
-    width: 20%;
+    right: 17px;
+    width: 25%;
     height: none;
     padding: 15px;
     border-radius: 8px; /* Rounded corners for pop-up feel */
