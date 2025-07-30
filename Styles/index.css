@@ -217,6 +217,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
  overflow-x: hidden; /* ✅ Prevent horizontal scroll */
+ gap: 10px;
   
 }
 
