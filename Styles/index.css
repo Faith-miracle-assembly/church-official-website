@@ -317,6 +317,140 @@ body {
   display: block;
 }
 
+.greatness-section {
+  background-image: url('http://127.0.0.1:5500/Images/image7.jpg'); /* ✅ Your image path */
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 60px 30px;
+  box-sizing: border-box;
+}
+
+.greatness-overlay {
+  background-color: rgba(255, 255, 255, 0.85); /* Soft overlay for readability */
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.greatness-content h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.greatness-content p {
+  font-size: 1.1em;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.join-btn {
+  background-color: #001f3f; /* Blackish blue */
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #003366;
+}
+
+.support-section {
+  background-image: none; /* ✅ Your image path */
+  background-size: cover;
+  background-position: center;
+  padding: 60px 30px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.support-content {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.support-content h2,
+.support-content h3 {
+  font-size: 2em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.support-content p {
+  font-size: 1.1em;
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.support-btn {
+  background-color: #001f3f;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 10px;
+  transition: background 0.3s ease;
+}
+
+.support-btn:hover {
+  background-color: #003366;
+}
+
+.connect-row {
+  background-color: #fff;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.connect-header {
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+.connect-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.connect-card {
+  flex: 1;
+  max-width: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.connect-card:hover {
+  transform: scale(1.05);
+}
+
+.connect-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
 
 /* Footer */
 .site-footer {
