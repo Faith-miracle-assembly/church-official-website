@@ -216,6 +216,7 @@ body {
   justify-items: center;
   align-items: center;
   flex-wrap: wrap;
+ overflow-x: hidden; /* ✅ Prevent horizontal scroll */
   
 }
 
