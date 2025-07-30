@@ -318,7 +318,7 @@ body {
 }
 
 .greatness-section {
-  background-image: url('https://github.com/Faith-miracle-assembly/church-official-website/blob/main/Images/image7.jpg'); /* ✅ Your image path */
+  background-image: url('https://raw.githubusercontent.com/Faith-miracle-assembly/church-official-website/main/Images/image7.jpg'); /* ✅ Your image path */
   background-size: cover;
   background-position: center;
   width: 100%;
