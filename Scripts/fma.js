@@ -62,3 +62,13 @@ const lastUpdated = new Date(document.lastModified);
 
   document.querySelector('.site-footer').appendChild(updatedPara);
 
+
+window.addEventListener('load', () => {
+    if (window.innerWidth <= 600) {
+      const header = document.querySelector('header');
+      if (header) {
+        header.style.height = '970px'; // Adjust this value as needed
+        header.style.backgroundSize = 'cover'; // Optional: ensures background fills
+      }
+    }
+  });
