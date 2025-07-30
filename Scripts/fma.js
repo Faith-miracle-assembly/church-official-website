@@ -74,3 +74,22 @@ window.addEventListener('load', () => {
   });
 
  
+   document.addEventListener("DOMContentLoaded", function() {
+    // Lead Pastors section
+    const leadPastorSection = document.querySelector(".lead-pastor-section");
+    if (leadPastorSection) {
+      leadPastorSection.style.backgroundImage = "url('Images/image2.jpg')";
+      leadPastorSection.style.backgroundSize = "cover";
+      leadPastorSection.style.backgroundPosition = "center";
+      leadPastorSection.style.backgroundRepeat = "no-repeat";
+    }
+
+    // Greatness Community section
+    const greatnessSection = document.querySelector(".greatness-section");
+    if (greatnessSection) {
+      greatnessSection.style.backgroundImage = "url('Images/image7.jpg')";
+      greatnessSection.style.backgroundSize = "cover";
+      greatnessSection.style.backgroundPosition = "center";
+      greatnessSection.style.backgroundRepeat = "no-repeat";
+    }
+  });
