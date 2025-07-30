@@ -452,7 +452,7 @@ body {
 .lead-pastor-section {
   width: 100%;
   margin: 60px 0;
-  background-image: url('https://github.com/Faith-miracle-assembly/church-official-website/blob/main/Images/image2.jpg'); /* ✅ Your background image */
+  background-image: url('https://raw.githubusercontent.com/Faith-miracle-assembly/church-official-website/main/Images/image2.jpg'); /* ✅ Your background image */
   background-size: cover;
   background-position: center;
   padding: 80px 30px;
