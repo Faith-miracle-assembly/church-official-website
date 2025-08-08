@@ -69,8 +69,8 @@ body {
 /* Top Navigation Bar */
 .header-top {
   position: absolute;
-  top: 6;
-  left: -2;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   width: 100%;
   padding: 0px 25px;
