@@ -621,16 +621,18 @@ body {
   }
 }
 /* expression page*/
-.welcome {
+.welcome-wrapper {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* Center the full-width section */
   background-color: #fff;
-  padding: 40px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 60px auto;
-  margin-top: -10px;
+  padding: 100px 20px 60px 20px; /* Adjust top padding */
+  margin-top: -100px; /* Pull upward to touch screen top */
+  box-sizing: border-box;
 }
+
 
 .welcome h1 {
   font-size: 36px;
