@@ -99,7 +99,7 @@ window.addEventListener('load', () => {
   // Style the welcome section
   const welcome = document.querySelector(".welcome");
   if (welcome) {
-    welcome.style.backgroundColor = "#fff";
+    welcome.style.backgroundColor = "#94d054ff";
     welcome.style.padding = "2em";
     welcome.style.textAlign = "center";
     welcome.style.borderRadius = "10px";
