@@ -101,6 +101,7 @@ body {
 .logo {
   height: 60px;
   width: 250;
+  left: 2px;
 }
 
 .church-name {
