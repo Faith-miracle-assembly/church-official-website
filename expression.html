@@ -51,3 +51,82 @@
 </body>
 </html>
 
+<script>
+  // Style the body
+  document.body.style.margin = "0";
+  document.body.style.fontFamily = "Segoe UI, sans-serif";
+  document.body.style.backgroundColor = "#f4f4f4";
+  document.body.style.color = "#333";
+
+  // Style header navigation
+  const navItems = document.querySelectorAll("nav ul li");
+  navItems.forEach(item => {
+    item.style.display = "inline-block";
+    item.style.margin = "0 15px";
+    item.style.color = "#fff";
+    item.style.fontWeight = "bold";
+  });
+
+  const header = document.querySelector("header");
+  if (header) {
+    header.style.backgroundColor = "#2c3e50";
+    header.style.padding = "1em";
+  }
+
+  // Style main section
+  const main = document.querySelector("main");
+  if (main) {
+    main.style.textAlign = "center";
+    main.style.padding = "2em";
+  }
+
+  // Style welcome section
+  const welcome = document.querySelector(".welcome");
+  if (welcome) {
+    welcome.style.backgroundColor = "#fff";
+    welcome.style.padding = "2em";
+    welcome.style.borderRadius = "8px";
+    welcome.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
+    welcome.style.marginBottom = "2em";
+  }
+
+  // Style button
+  const button = document.querySelector("button");
+  if (button) {
+    button.style.padding = "10px 20px";
+    button.style.backgroundColor = "#3498db";
+    button.style.color = "#fff";
+    button.style.border = "none";
+    button.style.borderRadius = "4px";
+    button.style.cursor = "pointer";
+    button.style.fontSize = "16px";
+
+    button.addEventListener("mouseover", () => {
+      button.style.backgroundColor = "#2980b9";
+    });
+    button.addEventListener("mouseout", () => {
+      button.style.backgroundColor = "#3498db";
+    });
+  }
+
+  // Style locations section
+  const locations = document.getElementById("locations");
+  if (locations) {
+    locations.style.backgroundColor = "#ecf0f1";
+    locations.style.padding = "1.5em";
+    locations.style.borderRadius = "6px";
+    locations.style.marginTop = "1em";
+  }
+
+  // Style footer
+  const footer = document.querySelector("footer");
+  if (footer) {
+    footer.style.backgroundColor = "#2c3e50";
+    footer.style.color = "#fff";
+    footer.style.textAlign = "center";
+    footer.style.padding = "1em";
+    footer.style.position = "fixed";
+    footer.style.bottom = "0";
+    footer.style.width = "100%";
+  }
+</script>
