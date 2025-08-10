@@ -1,25 +1,38 @@
-/* Base Styles */
+/* Performance Optimized CSS - Faith Miracle Assembly */
 :root {
   --primary-color: #2575fc;
   --secondary-color: #a8e063;
   --dark-blue: #001f3f;
   --text-color: #333;
+  --text-light: #444;
   --background-color: #f9f9f9;
+  --white: #ffffff;
   --border-radius: 8px;
+  --border-radius-large: 12px;
   --transition: 0.3s ease;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 16px rgba(0,0,0,0.2);
+  --font-family: 'Segoe UI', sans-serif;
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px;
+  --spacing-xl: 60px;
+}
+
+/* Base Styles with performance optimizations */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-family);
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-* {
-  box-sizing: border-box;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* Header Container */
@@ -28,7 +41,7 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  color: white;
+  color: var(--white);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -45,6 +58,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 /* Image Slideshow */
@@ -60,6 +74,7 @@ body {
   align-items: center;
 }
 
+/* Performance: Hardware acceleration for slides */
 .slide {
   position: absolute;
   top: 0;
@@ -68,8 +83,10 @@ body {
   height: 100%;
   object-fit: cover;
   opacity: 0;
+  transform: translateZ(0); /* Force hardware acceleration */
   transition: opacity 1s ease-in-out;
   z-index: -1;
+  will-change: opacity; /* Optimize for animations */
 }
 
 .slide.active {
@@ -81,9 +98,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  box-sizing: border-box;
   width: 100%;
-  padding: 0px 25px;
+  padding: 0 25px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -91,52 +107,44 @@ body {
   background: rgba(0, 0, 0, 0);
 }
 
-/* Logo and Church Name */
+/* Logo and Church Name - FIXED */
 .logo-link {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   text-decoration: none;
-  
-}
-
-.logo-link {
-  display: flex;
-  flex-direction: row; /* Changed from column to row */
-  align-items: center; /* Vertically center the logo and name */
-  text-decoration: none;
-  gap: 2px; /* Optional: adds space between logo and name */
+  gap: 2px;
 }
 
 .logo {
-  height: 60px;
-  width: 250;
+  height: 40px;
+  width: 40px; /* FIXED: Added proper unit */
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .church-name {
   font-size: 1rem;
   font-weight: bold;
-  color: white;
+  color: var(--white);
   margin: 0;
-  line-height: 1; /* Reduce spacing around text */
+  line-height: 1;
 }
-
 
 /* Navigation Links */
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: var(--spacing-medium);
 }
 
 .nav-links a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color var(--transition);
 }
 
 .nav-links a:hover {
-  color: #101ff3;
+  color: var(--primary-color);
 }
 
 /* Main Header Content */
@@ -144,120 +152,92 @@ body {
   position: relative;
   z-index: 2;
   background: rgba(0, 0, 0, 0.582);
-  padding: 20px 40px;
-  border-radius: 10px;
+  padding: var(--spacing-medium) var(--spacing-large);
+  border-radius: var(--spacing-small);
 }
 
 .action-boxes {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: var(--spacing-medium);
   margin: 30px 0;
   flex-wrap: wrap;
 }
 
+/* Performance optimized boxes */
 .box {
-  padding: 20px 30px;
-  border-radius: 8px;
+  padding: var(--spacing-medium) 30px;
+  border-radius: var(--border-radius);
   text-align: center;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   width: 200px;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition);
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform; /* Optimize for animations */
 }
 
-
 .box:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
 }
 
 .box.blue {
-  background-color: #2575fc;
+  background-color: var(--primary-color);
 }
 
 .box.white {
-  background-color: #ffffff;
-  color: #2575fc;
-  border: 2px solid #2575fc;
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .box.green {
-  background-color: #a8e063; /* lemon green */
-  color: #333;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
-/* Fix header spacing on mobile */
-@media (max-width: 600px) {
-  .header-content {
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px; /* Pushes content below logo */
-  }
-
-  .action-boxes {
-    display: flex;
-    flex-direction: column; /* Stack vertically */
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    overflow: visible; /* Ensure nothing is clipped */
-  }
-
-  .action-boxes .box {
-    width: 90%;
-    max-width: 300px;
-    margin: 10px auto;
-    box-sizing: border-box;
-  }
-}
-
+/* Welcome Section */
 .welcome-section {
-  background-color:#a8e063;
-  padding: 40px;
-  width: 100%; /* Default for small screens */
+  background-color: var(--secondary-color);
+  padding: var(--spacing-large);
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  justify-items: center;
   align-items: center;
   flex-wrap: wrap;
- overflow-x: hidden; /* ✅ Prevent horizontal scroll */
- gap: 10px;
-  
+  overflow-x: hidden;
+  gap: var(--spacing-small);
 }
-
 
 .welcome-text {
   flex: 1;
-  padding-right: 20px;
+  padding-right: var(--spacing-medium);
 }
 
 .welcome-text h2 {
   margin-top: 0;
   font-size: 28px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .welcome-text p {
   font-size: 16px;
-  color: #444;
+  color: var(--text-light);
   line-height: 1.6;
 }
 
 .join-box {
-  margin-top: 20px;
-  background-color: #001f3f; /* Blackish blue */
-  padding: 10px 20px;
+  margin-top: var(--spacing-medium);
+  background-color: var(--dark-blue);
+  padding: var(--spacing-small) var(--spacing-medium);
   display: inline-block;
 }
 
 .join-box a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
 }
@@ -282,6 +262,7 @@ body {
   object-fit: cover;
   position: absolute;
   animation: slide 9s infinite;
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .slideshow img:nth-child(2) {
@@ -300,25 +281,29 @@ body {
   100% { opacity: 0; }
 }
 
+/* Flyer Grid */
 .flyer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px; /* Space between flyers */
-  padding: 40px 30px; /* Space on both ends */
+  gap: 30px;
+  padding: var(--spacing-large) 30px;
   background-color: #f5f5f5;
 }
 
+/* Performance optimized flyer items */
 .flyer-item {
   display: block;
-  border-radius: 12px;
+  border-radius: var(--border-radius-large);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform; /* Optimize for animations */
 }
 
 .flyer-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: scale(1.03) translateZ(0);
+  box-shadow: var(--shadow-hover);
 }
 
 .flyer-item img {
@@ -327,64 +312,65 @@ body {
   display: block;
 }
 
+/* Greatness Section */
 .greatness-section {
-  background-image: url('Images/image7.jpg'); /* ✅ Your image path */
+  background-image: url('Images/image7.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
-  padding: 60px 30px;
+  padding: var(--spacing-xl) 30px;
   box-sizing: border-box;
 }
 
 .greatness-overlay {
-  background-color: rgba(255, 255, 255, 0.85); /* Soft overlay for readability */
-  padding: 40px;
-  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-large);
   max-width: 900px;
   margin: 0 auto;
 }
 
 .greatness-content h2 {
   font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-medium);
 }
 
 .greatness-content p {
   font-size: 1.1em;
-  color: #444;
+  color: var(--text-light);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-medium);
 }
 
 .join-btn {
-  background-color: #001f3f; /* Blackish blue */
-  color: #fff;
+  background-color: var(--dark-blue);
+  color: var(--white);
   padding: 12px 24px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
   display: inline-block;
-  transition: background 0.3s ease;
+  transition: background var(--transition);
 }
 
 .join-btn:hover {
   background-color: #003366;
 }
 
+/* Support Section */
 .support-section {
-  background-image: none; /* ✅ Your image path */
   background-size: cover;
   background-position: center;
-  padding: 60px 30px;
+  padding: var(--spacing-xl) 30px;
   box-sizing: border-box;
   width: 100%;
 }
 
 .support-content {
   background-color: rgba(255, 255, 255, 0);
-  padding: 40px;
-  border-radius: 12px;
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-large);
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -394,42 +380,43 @@ body {
 .support-content h3 {
   font-size: 2em;
   color: #2c3e50;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-medium);
 }
 
 .support-content p {
   font-size: 1.1em;
   color: #34495e;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-medium);
 }
 
 .support-btn {
-  background-color: #001f3f;
-  color: #fff;
+  background-color: var(--dark-blue);
+  color: var(--white);
   padding: 12px 24px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
   display: inline-block;
-  margin: 10px;
-  transition: background 0.3s ease;
+  margin: var(--spacing-small);
+  transition: background var(--transition);
 }
 
 .support-btn:hover {
   background-color: #003366;
 }
 
+/* Connect Row */
 .connect-row {
-  background-color: #ffffff00;
-  padding: 60px 30px;
+  background-color: transparent;
+  padding: var(--spacing-xl) 30px;
   text-align: center;
 }
 
 .connect-header {
   font-size: 2.5em;
   color: #2c3e50;
-  margin-bottom: 40px;
+  margin-bottom: var(--spacing-large);
 }
 
 .connect-cards {
@@ -442,15 +429,17 @@ body {
 .connect-card {
   flex: 1;
   max-width: 220px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
   cursor: pointer;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .connect-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
 }
 
 .connect-card img {
@@ -459,36 +448,37 @@ body {
   display: block;
 }
 
+/* Lead Pastor Section */
 .lead-pastor-section {
   width: 100%;
-  margin: 60px 0;
-  background-image: url('Images/image2.jpg'); /* ✅ Your background image */
+  margin: var(--spacing-xl) 0;
+  background-image: url('Images/image2.jpg');
   background-size: cover;
   background-position: center;
   padding: 80px 30px;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
 .pastor-bg {
-  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
-  padding: 40px;
-  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-large);
   max-width: 900px;
   margin: 0 auto;
 }
 
 .pastor-content h1 {
   font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #fff;
+  margin-bottom: var(--spacing-small);
+  color: var(--white);
 }
 
 .pastor-content h2 {
   font-size: 1.8em;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-medium);
   color: #f9f9f9;
 }
 
@@ -502,23 +492,23 @@ body {
 .learn-link {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #e74c3c; /* TEC-style red accent */
-  color: #fff;
+  background-color: #e74c3c;
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition);
 }
 
 .learn-link:hover {
   background-color: #c0392b;
 }
 
-
+/* Footer */
 .site-footer {
   background-color: #01141f;
   color: #f0eded;
-  padding: 20px 10px;
+  padding: var(--spacing-medium) var(--spacing-small);
   text-align: center;
   font-size: 0.9rem;
   border-top: 1px solid #ddd;
@@ -559,23 +549,22 @@ body {
   vertical-align: middle;
 }
 
-
-/* Hamburger icon - hidden by default */
+/* Hamburger Menu */
 .hamburger {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  color: white;
+  color: var(--white);
   z-index: 30;
 }
 
-/* Close button inside menu */
 .close-btn {
+  display: none;
   font-size: 2rem;
-  color: white;
+  color: var(--white);
   text-align: right;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-small);
 }
 
 /* Mobile styles */
@@ -595,11 +584,10 @@ body {
     top: 0px;
     right: 27px;
     width: 39%;
-    height: none;
     padding: 15px;
-    border-radius: 8px; /* Rounded corners for pop-up feel */
+    border-radius: var(--border-radius);
     z-index: 20;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    box-shadow: var(--shadow);
   }
 
   .nav-links.show {
@@ -608,49 +596,40 @@ body {
 
   .nav-links a {
     padding: 0px 0;
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-weight: bold;
   }
-}
-/* Hide close button by default */
-.close-btn {
-  display: none;
-}
 
-/* Show close button only on mobile */
-@media (max-width: 767px) {
   .close-btn {
     display: block;
     font-size: 2rem;
-    color: white;
+    color: var(--white);
     text-align: right;
     cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: var(--spacing-medium);
+    margin-bottom: var(--spacing-small);
   }
 }
-/* expression page*/
+
+/* Expression page styles */
 .welcome {
-  background-color: #fff;
-  padding: 100px 20px 40px 20px; /* More top padding */
+  background-color: var(--white);
+  padding: 100px 20px 40px 20px;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--spacing-small);
+  box-shadow: var(--shadow);
   max-width: 600px;
-  margin: -60px auto 60px auto; /* Pull upward to touch top */
-  width: 100%; /* Full screen width */
-  margin-left: calc(-50vw + 50%); /* Center full-width element */
+  margin: -60px auto 60px auto;
+  width: 100%;
+  margin-left: calc(-50vw + 50%);
   box-sizing: border-box;
 }
-
-
-
 
 .welcome h1 {
   font-size: 36px;
   color: #2c3e50;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-small);
 }
 
 .welcome p {
@@ -659,17 +638,29 @@ body {
   margin-bottom: 30px;
 }
 
-.join-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #e74c3c;
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
+/* Mobile optimizations */
+@media (max-width: 600px) {
+  .header-content {
+    padding: var(--spacing-medium);
+    text-align: center;
+    margin-top: var(--spacing-medium);
+  }
 
-.join-btn:hover {
-  background-color: #c0392b;
+  .action-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--spacing-small);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .action-boxes .box {
+    width: 90%;
+    max-width: 300px;
+    margin: var(--spacing-small) auto;
+    box-sizing: border-box;
+  }
 }

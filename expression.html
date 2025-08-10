@@ -2,8 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to Our Church</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Optimization -->
+  <meta name="description" content="Faith Miracle Assembly Church Locations - We Can't Wait To Meet You. One church in multiple locations across Nigeria, UK, USA, Canada, and Belgium.">
+  <meta name="keywords" content="Faith Miracle Assembly, church locations, Nigeria, UK, USA, Canada, Belgium, worship, community">
+  <meta property="og:title" content="Faith Miracle Assembly Church - Locations">
+  <meta property="og:description" content="We Can't Wait To Meet You. One church in multiple locations worldwide.">
+  <meta property="og:image" content="Images/FMA LOGO.jpg">
+  <meta property="og:url" content="https://faith-miracle-assembly.github.io/church-official-website/expression.html">
+  
+  <title>Faith Miracle Assembly Church - Locations</title>
   <link rel="stylesheet" href="Styles/index.css">
+  
+  <!-- Performance: Preload critical resources -->
+  <link rel="preload" href="Images/FMA LOGO.jpg" as="image">
 </head>
 <body>
   <header>
@@ -18,7 +30,7 @@
 <!-- Navigation Menu -->
 <nav class="nav-links" id="mobileMenu"> 
   <div class="close-btn" onclick="toggleMenu()">×</div>
-  <a href="#">Home</a>
+  <a href="index.html">Home</a>
   <a href="#">Livestream</a>
   <a href="#">Give</a>
   <a href="expression.html">Expressions</a>
@@ -37,31 +49,229 @@
   <a href="https://www.youtube.com/@faithmiracleassemblychurch/live" target="_blank" class="join-btn">Join Us Online</a>
 </section>
 
+<!-- Enhanced Locations Section -->
+<section class="locations-section">
+  <div class="locations-container">
+    <h2>Our Global Locations</h2>
+    <div class="locations-grid">
+      
+      <!-- Nigeria Locations -->
+      <div class="location-group">
+        <h3>🇳🇬 Nigeria</h3>
+        <div class="location-list">
+          <div class="location-item">
+            <h4>Lagos</h4>
+            <p>Main headquarters and primary worship center</p>
+          </div>
+          <div class="location-item">
+            <h4>Ibadan</h4>
+            <p>Regional worship center</p>
+          </div>
+          <div class="location-item">
+            <h4>Ogun</h4>
+            <p>Community worship center</p>
+          </div>
+          <div class="location-item">
+            <h4>Abuja</h4>
+            <p>Federal capital territory center</p>
+          </div>
+          <div class="location-item">
+            <h4>Rivers</h4>
+            <p>South-South regional center</p>
+          </div>
+        </div>
+      </div>
 
-    <section id="locations" class="hidden">
-      <h2>Our Locations</h2>
-      <ul>
-        <li>Lagos, Nigeria</li>
-        <li>Ibadan, Nigeria</li>
-        <li>Ogun, Nigeria</li>
-        <li>Abuja, Nigeria</li>
-        <li>Rivers, Nigeria</li>
-        <li>United Kingdom</li>
-        <li>USA – Pistis Life Church</li>
-        <li>Canada – Elevate Community Church</li>
-        <li>Belgium</li>
-      </ul>
-    </section>
+      <!-- International Locations -->
+      <div class="location-group">
+        <h3>🌍 International</h3>
+        <div class="location-list">
+          <div class="location-item">
+            <h4>🇬🇧 United Kingdom</h4>
+            <p>European worship center</p>
+          </div>
+          <div class="location-item">
+            <h4>🇺🇸 USA - Pistis Life Church</h4>
+            <p>North American partnership</p>
+          </div>
+          <div class="location-item">
+            <h4>🇨🇦 Canada - Elevate Community Church</h4>
+            <p>Canadian partnership</p>
+          </div>
+          <div class="location-item">
+            <h4>🇧🇪 Belgium</h4>
+            <p>European community center</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <h3>Ready to Join Us?</h3>
+      <p>Whether you're visiting one of our physical locations or joining us online, we're excited to welcome you into our family.</p>
+      <div class="cta-buttons">
+        <a href="https://www.youtube.com/@faithmiracleassemblychurch/live" target="_blank" class="join-btn primary">Watch Live</a>
+        <a href="index.html" class="join-btn secondary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Your Church Name. All rights reserved.</p>
+  <!-- Enhanced Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Faith Miracle Assembly Church. All rights reserved.</p>
+
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <span class="divider">|</span>
+      <a href="https://faith-miracle-assembly.github.io/church-official-website/" target="_blank">Main Website</a>
+      <span class="divider">|</span>
+      <a href="#" target="_blank">Contact Us</a>
+      <span class="divider">|</span>
+      <a href="https://www.youtube.com/@faithmiracleassemblychurch/live" target="_blank">Watch Live</a>
+    </nav>
+
+    <div class="social-icons">
+      <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter" loading="lazy"></a>
+      <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn" loading="lazy"></a>
+      <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook" loading="lazy"></a>
+      <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram" loading="lazy"></a>
+      <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube" loading="lazy"></a>
+    </div>
+
+    <nav class="footer-nav">
+      <a href="#">Privacy Policy</a>
+      <span class="divider">|</span>
+      <a href="#">Terms and Conditions</a>
+    </nav>
   </footer>
 
-  <script src="Scripts/fma.js"></script>
+  <!-- Performance: Load JavaScript with defer -->
+  <script src="Scripts/fma.js" defer></script>
+
+  <!-- Additional CSS for enhanced locations page -->
+  <style>
+    .locations-section {
+      padding: 60px 30px;
+      background-color: #f9f9f9;
+      min-height: 60vh;
+    }
+
+    .locations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .locations-container h2 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .location-group {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .location-group h3 {
+      font-size: 1.8em;
+      color: #2575fc;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #a8e063;
+      padding-bottom: 10px;
+    }
+
+    .location-item {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #2575fc;
+    }
+
+    .location-item h4 {
+      margin: 0 0 8px 0;
+      color: #2c3e50;
+      font-size: 1.2em;
+    }
+
+    .location-item p {
+      margin: 0;
+      color: #666;
+      font-size: 0.95em;
+    }
+
+    .cta-section {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .cta-section h3 {
+      font-size: 2em;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .join-btn.primary {
+      background-color: #2575fc;
+    }
+
+    .join-btn.secondary {
+      background-color: #a8e063;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .locations-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .location-group {
+        padding: 20px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .join-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
 </body>
 </html>
-
-
-
-  

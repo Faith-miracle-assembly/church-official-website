@@ -4,37 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- SEO and Social Sharing Metadata -->
-   <meta name="description" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE. We are more than a church, we are a family. Join our vibrant community for worship, prayer, and spiritual growth.">
-   <meta name="keywords" content="Faith Miracle Assembly, church, worship, prayer, community, Grace House, spiritual growth">
-   <meta property="og:title" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE">
-   <meta property="og:description" content="We are more than a church, we are a family. Join our vibrant community for worship and spiritual growth.">
+  <meta name="description" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE. We are more than a church, we are a family. Join our vibrant community for worship, prayer, and spiritual growth.">
+  <meta name="keywords" content="Faith Miracle Assembly, church, worship, prayer, community, Grace House, spiritual growth">
+  <meta property="og:title" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE">
+  <meta property="og:description" content="We are more than a church, we are a family. Join our vibrant community for worship and spiritual growth.">
   <meta property="og:image" content="Images/FMA LOGO.jpg">
   <meta property="og:url" content="https://faith-miracle-assembly.github.io/church-official-website/">
+  
+  <!-- Performance: Preload critical resources -->
+  <link rel="preload" href="Styles/index.css" as="style">
+  <link rel="preload" href="Images/FMA LOGO.jpg" as="image">
+  
+  <!-- Performance: Critical CSS inline -->
+  <style>
+    /* Critical CSS - Above the fold styles */
+    body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    .fma-header { position: relative; width: 100%; height: 100vh; overflow: hidden; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .header-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .header-top { position: absolute; top: 0; left: 0; width: 100%; padding: 0px 25px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 10; }
+    .logo { height: 40px; width: 40px; }
+    .church-name { font-size: 1rem; font-weight: bold; color: white; margin: 0; }
+  </style>
+  
   <title>Faith Miracle Assembly Church</title>
   <link rel="stylesheet" href="Styles/index.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>                              
+<body>
 
   <header class="fma-header">
-  <!-- Background Video -->
-  <video autoplay muted playsinline class="header-video">
+  <!-- Background Video - Performance Optimized -->
+  <video autoplay muted playsinline class="header-video" preload="metadata">
     <source src="Images/fma-background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- Image Slideshow -->
+  <!-- Image Slideshow - Performance Optimized with Lazy Loading -->
   <div class="image-slider">
-    <img src="Images/image1.jpg" class="slide active">
-    <img src="Images/image2.jpg" class="slide">
-    <img src="Images/image3.jpg" class="slide">
-    <img src="Images/image4.jpg" class="slide">
-    <img src="Images/image5.jpg" class="slide">
-    <img src="Images/image6.jpg" class="slide">
-    <img src="Images/image7.jpg" class="slide">
-    <img src="Images/image8.jpg" class="slide">
-    <img src="Images/image9.jpg" class="slide">
-    <img src="Images/image10.jpg" class="slide">
+    <img src="Images/image1.jpg" class="slide active" alt="Faith Miracle Assembly Church Service">
+    <img src="Images/image2.jpg" class="slide" loading="lazy" alt="Church Community Gathering">
+    <img src="Images/image3.jpg" class="slide" loading="lazy" alt="Worship Service">
+    <img src="Images/image4.jpg" class="slide" loading="lazy" alt="Church Fellowship">
+    <img src="Images/image5.jpg" class="slide" loading="lazy" alt="Prayer Meeting">
+    <img src="Images/image6.jpg" class="slide" loading="lazy" alt="Church Event">
+    <img src="Images/image7.jpg" class="slide" loading="lazy" alt="Community Outreach">
+    <img src="Images/image8.jpg" class="slide" loading="lazy" alt="Church Service">
+    <img src="Images/image9.jpg" class="slide" loading="lazy" alt="Worship Experience">
+    <img src="Images/image10.jpg" class="slide" loading="lazy" alt="Church Community">
   </div>
 
   <!-- Top Navigation Bar -->
@@ -68,23 +84,23 @@
 
     <p><strong>We are more than a church</strong> — we are a <em>family</em>.</p>
 
-   <p>We invite you to discover <strong>who we are</strong>, <strong>what we’re called to do</strong>, <strong>how we do it</strong>, and <strong>where you fit in</strong>.</p>
+   <p>We invite you to discover <strong>who we are</strong>, <strong>what we're called to do</strong>, <strong>how we do it</strong>, and <strong>where you fit in</strong>.</p>
 
    <p><strong>Welcome to GRACE HOUSE.</strong></p>
 
   </div>
 
   <div class="action-boxes">
-    <a href="expression.html"target="_blank" class="box blue">Find a Location</a>
-    <a href="#"target="_blank" class="box white">Attend Online</a>
-    <a href="#"target="_blank" class="box green">Become a Member</a>
+    <a href="expression.html" target="_blank" class="box blue">Find a Location</a>
+    <a href="#" target="_blank" class="box white">Attend Online</a>
+    <a href="#" target="_blank" class="box green">Become a Member</a>
   </div>
 </header>
 
  <section class="welcome-section">
   <div class="welcome-text">
     <h2>You are Welcome Here!</h2>
-    <p>New here? Get ready to experience a warm family of love, where you’re empowered to embrace greatness in life</p>
+    <p>New here? Get ready to experience a warm family of love, where you're empowered to embrace greatness in life</p>
     <p>While serving God and humanity. At our core, we believe in living and leading differently.</p>
     <div class="join-box">
       <a href="about.html">JOIN OUR FAMILY</a>
@@ -93,35 +109,36 @@
 
   <div class="slideshow-box">
     <div class="slideshow">
-      <img src="Images/image10.jpg" alt="Slide 1">
-      <img src="Images/image9.jpg" alt="Slide 2">
-      <img src="Images/image8.jpg" alt="Slide 3">
-      <img src="Images/image1.jpg" alt="Slide 4">
-      <img src="Images/image5.jpg" alt="Slide 5">
+      <img src="Images/image10.jpg" alt="Church Community" loading="lazy">
+      <img src="Images/image9.jpg" alt="Worship Experience" loading="lazy">
+      <img src="Images/image8.jpg" alt="Church Service" loading="lazy">
+      <img src="Images/image1.jpg" alt="Faith Miracle Assembly" loading="lazy">
+      <img src="Images/image5.jpg" alt="Prayer Meeting" loading="lazy">
     </div>
   </div>
 </section>
 
+<!-- Performance Optimized Flyer Grid with Lazy Loading -->
 <section class="flyer-grid">
   <a href="community.html" class="flyer-item">
-    <img src="Images/community-flyer.jpg" alt="Join Our Community">
+    <img src="Images/community-flyer.jpg" alt="Join Our Community" loading="lazy">
   </a>
   <a href="prayer.html" class="flyer-item">
-    <img src="Images/prayer-flyer.jpg" alt="Ask for Prayer">
+    <img src="Images/prayer-flyer.jpg" alt="Ask for Prayer" loading="lazy">
   </a>
 
   <a href="worship.html" class="flyer-item">
-    <img src="Images/worship-flyer.jpg" alt="Worship With Us">
+    <img src="Images/worship-flyer.jpg" alt="Worship With Us" loading="lazy">
   </a>
   <a href="counselling.html" class="flyer-item">
-    <img src="Images/counselling-flyer.jpg" alt="Need Counselling?">
+    <img src="Images/counselling-flyer.jpg" alt="Need Counselling?" loading="lazy">
   </a>
 
   <a href="events.html" class="flyer-item">
-    <img src="Images/events-flyer.jpg" alt="Upcoming Events">
+    <img src="Images/events-flyer.jpg" alt="Upcoming Events" loading="lazy">
   </a>
   <a href="about.html" class="flyer-item">
-    <img src="Images/pastors-flyer.jpg" alt="Meet Our Pastors">
+    <img src="Images/pastors-flyer.jpg" alt="Meet Our Pastors" loading="lazy">
   </a>
 </section>
 
@@ -167,16 +184,16 @@
   <h2 class="connect-header">GET CONNECTED</h2>
   <div class="connect-cards">
     <a href="about.html" class="connect-card">
-      <img src="Images/about.jpg" alt="About Us">
+      <img src="Images/about.jpg" alt="About Us" loading="lazy">
     </a>
     <a href="membership.html" class="connect-card">
-      <img src="Images/membership.jpg" alt="Membership Class">
+      <img src="Images/membership.jpg" alt="Membership Class" loading="lazy">
     </a>
     <a href="join.html" class="connect-card">
-      <img src="Images/community.jpg" alt="Join Faith-Miracle Community">
+      <img src="Images/community.jpg" alt="Join Faith-Miracle Community" loading="lazy">
     </a>
     <div class="connect-card">
-      <img src="Images/flyer.jpg" alt="Flyer">
+      <img src="Images/flyer.jpg" alt="Flyer" loading="lazy">
     </div>
   </div>
 </section>
@@ -189,17 +206,11 @@
       <h2>Pastor Sunday Oziegbe Favour & Pastor Mama Favour</h2>
       <p>The Faith Miracle Assembly Church is led by Pastor Sunday Oziegbe Favour and Pastor Mama Favour, supported by a global team of Pastors and Ministers.</p>
       <p>Pst Favour is an accomplished author, speaker, leadership expert, and relationship coach.</p>
-      <p>Pst Mama Favour is a renowned publisher, finance expert, and the convener of <strong>Made for More</strong>, a conference for women’s empowerment.</p>
+      <p>Pst Mama Favour is a renowned publisher, finance expert, and the convener of <strong>Made for More</strong>, a conference for women's empowerment.</p>
       <a href="#" target="_blank" class="learn-link">Learn More</a>
     </div>
   </div>
 </section>
-
-
-
-
-
-  
 
  <footer class="site-footer">
   <p>© 2025 Faith Miracle Assembly Church. All rights reserved.</p>
@@ -221,11 +232,11 @@
   </nav>
 
   <div class="social-icons">
-    <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter"></a>
-    <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn"></a>
-    <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook"></a>
-    <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram"></a>
-    <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube"></a>
+    <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter" loading="lazy"></a>
+    <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn" loading="lazy"></a>
+    <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook" loading="lazy"></a>
+    <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram" loading="lazy"></a>
+    <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube" loading="lazy"></a>
   </div>
 
   <nav class="footer-nav">
@@ -235,9 +246,9 @@
   </nav>
 </footer>
 
-<script src="Scripts/fma.js"></script>
+<!-- Performance: Load JavaScript with defer -->
+<script src="Scripts/fma.js" defer></script>
 </body>
 </html>
-
 
 
