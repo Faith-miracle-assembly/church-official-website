@@ -263,3 +263,16 @@ if (window.location.pathname.includes('expression.html')) {
   });
 }
 //
+// Simple version - adjust lead pastor padding
+(function() {
+  function setPastorPadding() {
+    const section = document.querySelector('.lead-pastor-section');
+    if (section && window.innerWidth > 1024) {
+      section.style.padding = '650px 30px';
+    }
+  }
+  
+  // Run on load and resize
+  window.addEventListener('load', setPastorPadding);
+  window.addEventListener('resize', setPastorPadding);
+})();
