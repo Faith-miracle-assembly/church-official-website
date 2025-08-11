@@ -448,7 +448,7 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 40px; /* Increased gap between cards */
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   max-width: 1200px; /* Increased max width */
   margin: 0 auto;
 }
