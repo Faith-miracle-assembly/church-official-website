@@ -519,7 +519,7 @@ body {
   background-image: url('Images/pst.jpg');
   background-size: cover;
   background-position: center;
-  padding: 80px 30px;
+  padding: 100px 30px;
   box-sizing: border-box;
   color: var(--white);
   margin-bottom: 0;
