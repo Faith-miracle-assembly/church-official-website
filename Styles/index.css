@@ -431,46 +431,76 @@ body {
   background-color: #003366;
 }
 
-/* Connect Row */
+/* GET CONNECTED Cards - Increased Size */
 .connect-row {
   background-color: transparent;
-  padding: var(--spacing-xl) 30px;
+  padding: 60px 30px; /* Increased padding */
   text-align: center;
 }
 
 .connect-header {
   font-size: 2.5em;
   color: #2c3e50;
-  margin-bottom: var(--spacing-large);
+  margin-bottom: 50px; /* Increased margin */
 }
 
 .connect-cards {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 40px; /* Increased gap between cards */
   flex-wrap: wrap;
+  max-width: 1200px; /* Increased max width */
+  margin: 0 auto;
 }
 
 .connect-card {
   flex: 1;
-  max-width: 220px;
-  border-radius: var(--border-radius);
+  max-width: 280px; /* Increased from 220px to 280px */
+  min-width: 250px; /* Added minimum width */
+  border-radius: 12px; /* Slightly larger border radius */
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform var(--transition);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* Enhanced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   transform: translateZ(0);
   will-change: transform;
 }
 
 .connect-card:hover {
-  transform: scale(1.05) translateZ(0);
+  transform: scale(1.08) translateZ(0); /* Increased hover scale */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25); /* Enhanced hover shadow */
 }
 
 .connect-card img {
   width: 100%;
   height: auto;
   display: block;
+  min-height: 200px; /* Ensure minimum height */
+  object-fit: cover; /* Ensures good image display */
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .connect-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .connect-card {
+    max-width: 350px; /* Larger on mobile */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .connect-row {
+    padding: 40px 20px;
+  }
+  
+  .connect-card {
+    max-width: 300px;
+  }
 }
 .connect-card {
   height: fit-content !important;
