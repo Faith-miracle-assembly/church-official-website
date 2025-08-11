@@ -472,7 +472,16 @@ body {
   height: auto;
   display: block;
 }
+.connect-card {c
+  height: fit-content !important;
+  min-height: auto !important;
+  align-self: start;
+}
 
+.connect-card img {
+  vertical-align: top;
+  line-height: 0;
+}
 /* Lead Pastor Section */
 .lead-pastor-section {
   width: 100%;
