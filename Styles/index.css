@@ -528,10 +528,12 @@ body {
 
 .pastor-bg {
   background-color: rgba(0, 0, 0, 0.6);
-  padding: var(--spacing-large);
-  border-radius: var(--border-radius-large);
+  padding: 40px;
+  border-radius: 12px;
   max-width: 900px;
-  margin: -80px auto 0 auto;
+  margin: -80px auto 0 auto; /* Push entire container up */
+  position: relative;
+  z-index: 2;
 }
 
 .pastor-content h1 {
