@@ -531,12 +531,7 @@ body {
   padding: var(--spacing-large);
   border-radius: var(--border-radius-large);
   max-width: 900px;
-  margin: 0 auto;
-  margin-top: -50px;
-}.pastor-content {
-  margin-top: -50px; /* Push content up by 50px */
-  position: relative;
-
+  margin: 0 auto;n
 }
 
 .pastor-content h1 {
