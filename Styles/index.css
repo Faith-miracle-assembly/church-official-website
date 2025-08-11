@@ -532,6 +532,7 @@ body {
   border-radius: var(--border-radius-large);
   max-width: 900px;
   margin: 0 auto;
+  object-fit: contain;
 }
 
 .pastor-content h1 {
