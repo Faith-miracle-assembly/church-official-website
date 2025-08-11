@@ -263,33 +263,3 @@ if (window.location.pathname.includes('expression.html')) {
   });
 }
 //
-// Fix background image cutting on large screens
-function fixLeadPastorBackground() {
-  const leadPastorSection = document.querySelector('.lead-pastor-section');
-  
-  if (leadPastorSection) {
-    // Change background image
-    leadPastorSection.style.backgroundImage = "url('Images/pst.jpg')";
-    
-    // Fix for large screens - prevent cutting
-    if (window.innerWidth > 1200) {
-      leadPastorSection.style.backgroundSize = 'contain'; // Shows full image
-      leadPastorSection.style.backgroundRepeat = 'no-repeat';
-      leadPastorSection.style.backgroundPosition = 'center';
-      leadPastorSection.style.backgroundColor = '#2c3e50'; // Fallback color for empty areas
-    } else {
-      leadPastorSection.style.backgroundSize = 'cover'; // Normal behavior for smaller screens
-      leadPastorSection.style.backgroundPosition = 'center';
-      leadPastorSection.style.backgroundRepeat = 'no-repeat';
-    }
-  }
-}
-
-// Run on page load
-document.addEventListener('DOMContentLoaded', fixLeadPastorBackground);
-
-// Run on window resize
-window.addEventListener('resize', function() {
-  clearTimeout(this.resizeTimeout);
-  this.resizeTimeout = setTimeout(fixLeadPastorBackground, 250);
-});
