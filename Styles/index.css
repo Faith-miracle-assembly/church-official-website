@@ -476,7 +476,7 @@ body {
   height: auto;
   display: block;
   min-height: 200px; /* Ensure minimum height */
-  object-fit: cover; /* Ensures good image display */
+  object-fit: contain; /* Ensures good image display */
 }
 
 /* Mobile responsive */
