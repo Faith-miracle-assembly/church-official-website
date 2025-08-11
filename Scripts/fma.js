@@ -205,51 +205,6 @@ class PerformanceOptimizer {
   }
 }
 
-// Simple Flyer Image Width Adjuster - Just makes images wider, keeps everything else the same
-class FlyerImageAdjuster {
-  static init() {
-    // Wait for images to load
-    window.addEventListener('load', () => {
-      this.adjustFlyerImages();
-    });
-    
-    // Also run on resize
-    window.addEventListener('resize', () => {
-      clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = setTimeout(() => {
-        this.adjustFlyerImages();
-      }, 250);
-    });
-  }
-
-  static adjustFlyerImages() {
-    const flyerItems = document.querySelectorAll('.flyer-grid .flyer-item');
-    
-    if (flyerItems.length === 0) return;
-
-    flyerItems.forEach(item => {
-      // Just make them wider - keep everything else the same
-      const currentWidth = item.offsetWidth;
-      const newWidth = Math.min(currentWidth * 1.3, 450); // 30% wider, max 450px
-      
-      item.style.width = `${newWidth}px`;
-      item.style.maxWidth = `${newWidth}px`;
-    });
-
-    // Adjust grid to accommodate wider items
-    const grid = document.querySelector('.flyer-grid');
-    if (grid) {
-      if (window.innerWidth <= 768) {
-        grid.style.gridTemplateColumns = '1fr';
-        grid.style.justifyItems = 'center';
-      } else {
-        grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-        grid.style.justifyContent = 'center';
-      }
-    }
-  }
-}
-
 // Error handling wrapper
 function safeExecute(fn, context = 'Unknown') {
   try {
@@ -269,9 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slideShow.init();
     
     PerformanceOptimizer.init();
-    
-    // Initialize simple flyer image adjuster
-    FlyerImageAdjuster.init();
     
   }, 'DOMContentLoaded initialization');
 }, { passive: true });
