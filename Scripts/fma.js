@@ -205,6 +205,51 @@ class PerformanceOptimizer {
   }
 }
 
+// Simple Flyer Image Width Adjuster - Just makes images wider, keeps everything else the same
+class FlyerImageAdjuster {
+  static init() {
+    // Wait for images to load
+    window.addEventListener('load', () => {
+      this.adjustFlyerImages();
+    });
+    
+    // Also run on resize
+    window.addEventListener('resize', () => {
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = setTimeout(() => {
+        this.adjustFlyerImages();
+      }, 250);
+    });
+  }
+
+  static adjustFlyerImages() {
+    const flyerItems = document.querySelectorAll('.flyer-grid .flyer-item');
+    
+    if (flyerItems.length === 0) return;
+
+    flyerItems.forEach(item => {
+      // Just make them wider - keep everything else the same
+      const currentWidth = item.offsetWidth;
+      const newWidth = Math.min(currentWidth * 1.3, 450); // 30% wider, max 450px
+      
+      item.style.width = `${newWidth}px`;
+      item.style.maxWidth = `${newWidth}px`;
+    });
+
+    // Adjust grid to accommodate wider items
+    const grid = document.querySelector('.flyer-grid');
+    if (grid) {
+      if (window.innerWidth <= 768) {
+        grid.style.gridTemplateColumns = '1fr';
+        grid.style.justifyItems = 'center';
+      } else {
+        grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        grid.style.justifyContent = 'center';
+      }
+    }
+  }
+}
+
 // Error handling wrapper
 function safeExecute(fn, context = 'Unknown') {
   try {
@@ -224,6 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
     slideShow.init();
     
     PerformanceOptimizer.init();
+    
+    // Initialize simple flyer image adjuster
+    FlyerImageAdjuster.init();
+    
   }, 'DOMContentLoaded initialization');
 }, { passive: true });
 
@@ -261,288 +310,3 @@ if (window.location.pathname.includes('expression.html')) {
     }, 'Expression page initialization');
   });
 }
-// Image Uniformity Manager - Ensures all flyer images display content properly
-class ImageUniformityManager {
-  constructor() {
-    this.flyerItems = [];
-    this.isInitialized = false;
-    this.resizeTimeout = null;
-  }
-
-  init() {
-    if (this.isInitialized) return;
-    
-    this.flyerItems = document.querySelectorAll('.flyer-grid .flyer-item img');
-    
-    if (this.flyerItems.length === 0) {
-      console.warn('No flyer images found');
-      return;
-    }
-
-    this.isInitialized = true;
-    this.setupImageHandling();
-    this.bindEvents();
-  }
-
-  setupImageHandling() {
-    // Wait for all images to load before calculating dimensions
-    const imagePromises = Array.from(this.flyerItems).map(img => {
-      return new Promise((resolve) => {
-        if (img.complete) {
-          resolve(img);
-        } else {
-          img.addEventListener('load', () => resolve(img), { once: true });
-          img.addEventListener('error', () => resolve(img), { once: true });
-        }
-      });
-    });
-
-    Promise.all(imagePromises).then(() => {
-      this.calculateOptimalDimensions();
-      this.applyUniformSizing();
-    });
-  }
-
-  calculateOptimalDimensions() {
-    let maxWidth = 0;
-    let maxHeight = 0;
-    const aspectRatios = [];
-
-    // Calculate dimensions and aspect ratios for all images
-    this.flyerItems.forEach(img => {
-      const naturalWidth = img.naturalWidth || img.width;
-      const naturalHeight = img.naturalHeight || img.height;
-      
-      if (naturalWidth && naturalHeight) {
-        maxWidth = Math.max(maxWidth, naturalWidth);
-        maxHeight = Math.max(maxHeight, naturalHeight);
-        aspectRatios.push(naturalWidth / naturalHeight);
-      }
-    });
-
-    // Find the most common aspect ratio or use average
-    const avgAspectRatio = aspectRatios.reduce((sum, ratio) => sum + ratio, 0) / aspectRatios.length;
-    
-    // Calculate optimal container dimensions based on viewport
-    const containerWidth = this.getOptimalContainerWidth();
-    const containerHeight = containerWidth / avgAspectRatio;
-
-    this.optimalDimensions = {
-  width: containerWidth,
-  height: Math.max(containerHeight, 280), // UPDATED: Increased minimum height
-  aspectRatio: avgAspectRatio
-};
-
-  getOptimalContainerWidth() {
-  const viewport = window.innerWidth;
-  const gridContainer = document.querySelector('.flyer-grid');
-  
-  if (!gridContainer) return 400; // UPDATED: Increased default width
-
-  const containerStyle = window.getComputedStyle(gridContainer);
-  const containerWidth = gridContainer.offsetWidth - 
-                        parseFloat(containerStyle.paddingLeft) - 
-                        parseFloat(containerStyle.paddingRight);
-  
-  // Calculate width based on grid columns - WIDER SIZING
-  if (viewport <= 768) {
-    // Single column on mobile - much wider
-    return Math.min(containerWidth - 20, 500); // UPDATED: Increased from 400 to 500
-  } else if (viewport <= 1024) {
-    // Tablet size - wider
-    return Math.min((containerWidth - 30) / 2, 450); // UPDATED: Added tablet breakpoint
-  } else {
-    // Desktop - significantly wider
-    return Math.min((containerWidth - 30) / 2, 500); // UPDATED: Increased from 350 to 500
-  }
-}
-
-  applyUniformSizing() {
-    if (!this.optimalDimensions) return;
-
-    const { width, height } = this.optimalDimensions;
-
-    // Apply uniform sizing to all flyer items
-    this.flyerItems.forEach((img, index) => {
-      const container = img.closest('.flyer-item');
-      if (!container) return;
-
-      // Set container dimensions
-      container.style.width = `${width}px`;
-      container.style.height = `${height}px`;
-      container.style.overflow = 'hidden';
-      container.style.position = 'relative';
-      container.style.display = 'flex';
-      container.style.alignItems = 'center';
-      container.style.justifyContent = 'center';
-
-      // Calculate the best fit for the image
-      this.fitImageToContainer(img, container, width, height);
-    });
-
-    // Update grid layout to accommodate new dimensions
-    this.updateGridLayout();
-  }
-
-  fitImageToContainer(img, container, containerWidth, containerHeight) {
-    const naturalWidth = img.naturalWidth || img.width;
-    const naturalHeight = img.naturalHeight || img.height;
-    
-    if (!naturalWidth || !naturalHeight) return;
-
-    const imageAspectRatio = naturalWidth / naturalHeight;
-    const containerAspectRatio = containerWidth / containerHeight;
-
-    let finalWidth, finalHeight;
-
-    if (imageAspectRatio > containerAspectRatio) {
-      // Image is wider - fit to height to show all content
-      finalHeight = containerHeight;
-      finalWidth = finalHeight * imageAspectRatio;
-    } else {
-      // Image is taller - fit to width to show all content
-      finalWidth = containerWidth;
-      finalHeight = finalWidth / imageAspectRatio;
-    }
-
-    fitImageToContainer(img, container, containerWidth, containerHeight) {
-  const naturalWidth = img.naturalWidth || img.width;
-  const naturalHeight = img.naturalHeight || img.height;
-  
-  if (!naturalWidth || !naturalHeight) return;
-
-  const imageAspectRatio = naturalWidth / naturalHeight;
-  const containerAspectRatio = containerWidth / containerHeight;
-
-  let finalWidth, finalHeight;
-
-  // Enhanced fitting algorithm for better content display
-  if (imageAspectRatio > containerAspectRatio) {
-    // Image is wider - fit to height but allow some width overflow for better content visibility
-    finalHeight = containerHeight;
-    finalWidth = finalHeight * imageAspectRatio;
-    
-    // If the width is much larger, scale down slightly to fit more content
-    if (finalWidth > containerWidth * 1.2) {
-      finalWidth = containerWidth * 1.1; // Allow 10% overflow
-      finalHeight = finalWidth / imageAspectRatio;
-    }
-  } else {
-    // Image is taller - fit to width
-    finalWidth = containerWidth;
-    finalHeight = finalWidth / imageAspectRatio;
-    
-    // If height is much larger, scale down slightly
-    if (finalHeight > containerHeight * 1.2) {
-      finalHeight = containerHeight * 1.1; // Allow 10% overflow
-      finalWidth = finalHeight * imageAspectRatio;
-    }
-  }
-
-  // Apply styles to ensure content is visible with minimal cropping
-  img.style.width = `${finalWidth}px`;
-  img.style.height = `${finalHeight}px`;
-  img.style.objectFit = 'cover'; // UPDATED: Changed from 'contain' to 'cover'
-  img.style.objectPosition = 'center';
-  img.style.maxWidth = 'none';
-  img.style.maxHeight = 'none';
-
-  // Center the image
-  img.style.position = 'absolute';
-  img.style.top = '50%';
-  img.style.left = '50%';
-  img.style.transform = 'translate(-50%, -50%)';
-}
-    img.style.maxWidth = 'none';
-    img.style.maxHeight = 'none';
-
-    // If image is smaller than container, center it
-    if (finalWidth < containerWidth || finalHeight < containerHeight) {
-      img.style.position = 'absolute';
-      img.style.top = '50%';
-      img.style.left = '50%';
-      img.style.transform = 'translate(-50%, -50%)';
-    }
-  }
-
-  updateGridLayout() {
-    const grid = document.querySelector('.flyer-grid');
-    if (!grid || !this.optimalDimensions) return;
-
-    const { width } = this.optimalDimensions;
-    const gap = 30;
-    const viewport = window.innerWidth;
-
-    if (viewport <= 768) {
-      // Single column on mobile
-      grid.style.gridTemplateColumns = '1fr';
-      grid.style.justifyItems = 'center';
-    } else {
-      // Two columns on desktop
-      grid.style.gridTemplateColumns = `repeat(2, ${width}px)`;
-      grid.style.justifyContent = 'center';
-    }
-
-    grid.style.gap = `${gap}px`;
-  }
-
-  bindEvents() {
-    // Handle window resize with debouncing
-    window.addEventListener('resize', () => {
-      clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = setTimeout(() => {
-        this.calculateOptimalDimensions();
-        this.applyUniformSizing();
-      }, 250);
-    }, { passive: true });
-
-    // Handle orientation change on mobile
-    window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        this.calculateOptimalDimensions();
-        this.applyUniformSizing();
-      }, 500);
-    }, { passive: true });
-  }
-
-  // Method to manually refresh if images are updated dynamically
-  refresh() {
-    this.flyerItems = document.querySelectorAll('.flyer-grid .flyer-item img');
-    this.setupImageHandling();
-  }
-}
-
-// Initialize the Image Uniformity Manager
-let imageUniformityManager;
-
-// Update the existing DOMContentLoaded event listener
-document.addEventListener('DOMContentLoaded', () => {
-  safeExecute(() => {
-    DOM.init();
-    
-    const slideShow = new SlideShow();
-    slideShow.init();
-    
-    PerformanceOptimizer.init();
-    
-    // Initialize Image Uniformity Manager
-    imageUniformityManager = new ImageUniformityManager();
-    imageUniformityManager.init();
-    
-  }, 'DOMContentLoaded initialization');
-}, { passive: true });
-
-// Add to window load event for additional safety
-window.addEventListener('load', () => {
-  safeExecute(() => {
-    PerformanceOptimizer.optimizeMobileHeader();
-    
-    // Ensure images are properly sized after everything loads
-    if (imageUniformityManager) {
-      setTimeout(() => {
-        imageUniformityManager.refresh();
-      }, 100);
-    }
-    
-  }, 'window load optimization');
-}, { passive: true });
