@@ -482,7 +482,7 @@ body {
 /* Mobile responsive */
 @media (max-width: 768px) {
   .connect-cards {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 30px;
   }
