@@ -328,30 +328,34 @@ class ImageUniformityManager {
     const containerHeight = containerWidth / avgAspectRatio;
 
     this.optimalDimensions = {
-      width: containerWidth,
-      height: Math.max(containerHeight, 250), // Minimum height of 250px
-      aspectRatio: avgAspectRatio
-    };
-  }
+  width: containerWidth,
+  height: Math.max(containerHeight, 280), // UPDATED: Increased minimum height
+  aspectRatio: avgAspectRatio
+};
 
   getOptimalContainerWidth() {
-    const viewport = window.innerWidth;
-    const gridContainer = document.querySelector('.flyer-grid');
-    
-    if (!gridContainer) return 300;
+  const viewport = window.innerWidth;
+  const gridContainer = document.querySelector('.flyer-grid');
+  
+  if (!gridContainer) return 400; // UPDATED: Increased default width
 
-    const containerStyle = window.getComputedStyle(gridContainer);
-    const containerWidth = gridContainer.offsetWidth - 
-                          parseFloat(containerStyle.paddingLeft) - 
-                          parseFloat(containerStyle.paddingRight);
-    
-    // Calculate width based on grid columns
-    if (viewport <= 768) {
-      return Math.min(containerWidth - 40, 400); // Single column on mobile
-    } else {
-      return Math.min((containerWidth - 30) / 2, 350); // Two columns on desktop
-    }
+  const containerStyle = window.getComputedStyle(gridContainer);
+  const containerWidth = gridContainer.offsetWidth - 
+                        parseFloat(containerStyle.paddingLeft) - 
+                        parseFloat(containerStyle.paddingRight);
+  
+  // Calculate width based on grid columns - WIDER SIZING
+  if (viewport <= 768) {
+    // Single column on mobile - much wider
+    return Math.min(containerWidth - 20, 500); // UPDATED: Increased from 400 to 500
+  } else if (viewport <= 1024) {
+    // Tablet size - wider
+    return Math.min((containerWidth - 30) / 2, 450); // UPDATED: Added tablet breakpoint
+  } else {
+    // Desktop - significantly wider
+    return Math.min((containerWidth - 30) / 2, 500); // UPDATED: Increased from 350 to 500
   }
+}
 
   applyUniformSizing() {
     if (!this.optimalDimensions) return;
@@ -401,11 +405,54 @@ class ImageUniformityManager {
       finalHeight = finalWidth / imageAspectRatio;
     }
 
-    // Apply styles to ensure all content is visible
-    img.style.width = `${finalWidth}px`;
-    img.style.height = `${finalHeight}px`;
-    img.style.objectFit = 'contain'; // Shows all content without cropping
-    img.style.objectPosition = 'center';
+    fitImageToContainer(img, container, containerWidth, containerHeight) {
+  const naturalWidth = img.naturalWidth || img.width;
+  const naturalHeight = img.naturalHeight || img.height;
+  
+  if (!naturalWidth || !naturalHeight) return;
+
+  const imageAspectRatio = naturalWidth / naturalHeight;
+  const containerAspectRatio = containerWidth / containerHeight;
+
+  let finalWidth, finalHeight;
+
+  // Enhanced fitting algorithm for better content display
+  if (imageAspectRatio > containerAspectRatio) {
+    // Image is wider - fit to height but allow some width overflow for better content visibility
+    finalHeight = containerHeight;
+    finalWidth = finalHeight * imageAspectRatio;
+    
+    // If the width is much larger, scale down slightly to fit more content
+    if (finalWidth > containerWidth * 1.2) {
+      finalWidth = containerWidth * 1.1; // Allow 10% overflow
+      finalHeight = finalWidth / imageAspectRatio;
+    }
+  } else {
+    // Image is taller - fit to width
+    finalWidth = containerWidth;
+    finalHeight = finalWidth / imageAspectRatio;
+    
+    // If height is much larger, scale down slightly
+    if (finalHeight > containerHeight * 1.2) {
+      finalHeight = containerHeight * 1.1; // Allow 10% overflow
+      finalWidth = finalHeight * imageAspectRatio;
+    }
+  }
+
+  // Apply styles to ensure content is visible with minimal cropping
+  img.style.width = `${finalWidth}px`;
+  img.style.height = `${finalHeight}px`;
+  img.style.objectFit = 'cover'; // UPDATED: Changed from 'contain' to 'cover'
+  img.style.objectPosition = 'center';
+  img.style.maxWidth = 'none';
+  img.style.maxHeight = 'none';
+
+  // Center the image
+  img.style.position = 'absolute';
+  img.style.top = '50%';
+  img.style.left = '50%';
+  img.style.transform = 'translate(-50%, -50%)';
+}
     img.style.maxWidth = 'none';
     img.style.maxHeight = 'none';
 

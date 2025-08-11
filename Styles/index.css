@@ -281,7 +281,7 @@ body {
   100% { opacity: 0; }
 }
 
-/* Flyer Grid - Updated to work with JavaScript sizing */
+/* Flyer Grid - Updated for wider images */
 .flyer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -289,9 +289,11 @@ body {
   padding: var(--spacing-large) 30px;
   background-color: #f5f5f5;
   justify-content: center;
+  max-width: 1200px; /* Increased max width */
+  margin: 0 auto;
 }
 
-/* Flyer items - Let JavaScript handle sizing */
+/* Flyer items - Wider containers */
 .flyer-item {
   display: block;
   border-radius: var(--border-radius-large);
@@ -301,7 +303,8 @@ body {
   transform: translateZ(0);
   will-change: transform;
   position: relative;
-  background-color: #fff; /* Fallback background */
+  background-color: #fff;
+  min-width: 300px; /* Minimum width for better display */
 }
 
 .flyer-item:hover {
@@ -314,12 +317,27 @@ body {
   transition: transform var(--transition);
 }
 
-/* Mobile responsive - Let JavaScript handle specific sizing */
+/* Mobile responsive - Wider on mobile too */
 @media (max-width: 768px) {
   .flyer-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: var(--spacing-medium) 15px;
+    max-width: 520px; /* Wider mobile container */
+  }
+  
+  .flyer-item {
+    min-width: 280px; /* Wider minimum on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .flyer-grid {
+    max-width: 400px;
+  }
+  
+  .flyer-item {
+    min-width: 250px;
   }
 }
 /* Greatness Section */
