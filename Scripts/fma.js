@@ -262,6 +262,7 @@ if (window.location.pathname.includes('expression.html')) {
     }, 'Expression page initialization');
   });
 }
+
 //
 // Simple version - adjust lead pastor padding
 (function() {
