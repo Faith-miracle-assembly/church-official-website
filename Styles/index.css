@@ -517,7 +517,7 @@ body {
   width: 100%;
   margin: var(--spacing-xl) 0;
   background-image: url('Images/pst.jpg');
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   padding: 80px 30px;
   box-sizing: border-box;
