@@ -325,6 +325,18 @@ body {
     padding: 15px 10px;
   }
 }
+/* Quick fix for container height issues */
+.flyer-item {
+  height: fit-content !important;
+  min-height: auto !important;
+  align-self: start;
+}
+
+.flyer-item img {
+  vertical-align: top;
+  line-height: 0;
+}
+
 /* Greatness Section */
 .greatness-section {
   background-image: url('Images/image7.jpg');
