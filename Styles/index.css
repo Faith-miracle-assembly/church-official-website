@@ -281,73 +281,13 @@ body {
   100% { opacity: 0; }
 }
 
-/* Flyer Grid - Updated for wider images */
-.flyer-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: var(--spacing-large) 30px;
-  background-color: #f5f5f5;
-  justify-content: center;
-  max-width: 1200px; /* Increased max width */
-  margin: 0 auto;
-}
-
-/* Flyer items - Wider containers */
-.flyer-item {
-  display: block;
-  border-radius: var(--border-radius-large);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
-  transform: translateZ(0);
-  will-change: transform;
-  position: relative;
-  background-color: #fff;
-  min-width: 300px; /* Minimum width for better display */
-}
-
-.flyer-item:hover {
-  transform: scale(1.03) translateZ(0);
-  box-shadow: var(--shadow-hover);
-}
-
-.flyer-item img {
-  display: block;
-  transition: transform var(--transition);
-}
-
-/* Mobile responsive - Wider on mobile too */
-@media (max-width: 768px) {
-  .flyer-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: var(--spacing-medium) 15px;
-    max-width: 520px; /* Wider mobile container */
-  }
-  
-  .flyer-item {
-    min-width: 280px; /* Wider minimum on mobile */
-  }
-}
-
-@media (max-width: 480px) {
-  .flyer-grid {
-    max-width: 400px;
-  }
-  
-  .flyer-item {
-    min-width: 250px;
-  }
-}
-/* Simple flyer grid update for wider images */
+/* Flyer Grid - Original Version */
 .flyer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   padding: 40px 30px;
   background-color: #f5f5f5;
-  justify-content: center;
 }
 
 .flyer-item {
@@ -355,11 +295,14 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .flyer-item:hover {
-  transform: scale(1.03);
+  transform: scale(1.03) translateZ(0);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .flyer-item img {
@@ -368,12 +311,20 @@ body {
   display: block;
 }
 
+/* Mobile responsive */
 @media (max-width: 768px) {
   .flyer-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 15px;
   }
 }
 
+@media (max-width: 480px) {
+  .flyer-grid {
+    padding: 15px 10px;
+  }
+}
 /* Greatness Section */
 .greatness-section {
   background-image: url('Images/image7.jpg');
