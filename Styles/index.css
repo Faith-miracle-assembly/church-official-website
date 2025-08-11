@@ -472,7 +472,7 @@ body {
   height: auto;
   display: block;
 }
-.connect-card {c
+.connect-card {
   height: fit-content !important;
   min-height: auto !important;
   align-self: start;
