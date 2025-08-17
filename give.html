@@ -109,11 +109,26 @@
     }
 
     .box {
-      background: #01141f91;
+      background: white;
       padding: 1.5rem;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+.box-grid .box:nth-child(1) {
+  background-color: #e8f5e9; /* Light green for Local Payments */
+}
+
+.box-grid .box:nth-child(2) {
+  background-color: #e3f2fd; /* Light blue for International Payments */
+}
+
+.box-grid .box:nth-child(3) {
+  background-color: #fff3e0; /* Light orange for International Church */
+}
+
+.box-grid .box:nth-child(4) {
+  background-color: #fce4ec; /* Light pink for Pay With Card */
+}
 
     .bank {
       display: flex;
