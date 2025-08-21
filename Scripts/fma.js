@@ -279,13 +279,3 @@ if (window.location.pathname.includes('expression.html')) {
 })();
 
 
-function adjustBackgroundHeight() {
-    const section = document.querySelector('.greatness-section');
-    if (document.fullscreenElement) {
-      section.style.height = '100vh'; // Full viewport height
-    } else {
-      section.style.height = ''; // Reset to default
-    }
-  }
-
-  document.addEventListener('fullscreenchange', adjustBackgroundHeight);
