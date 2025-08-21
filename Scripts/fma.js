@@ -169,7 +169,7 @@ class PerformanceOptimizer {
       const greatnessSection = document.querySelector(".greatness-section");
       if (greatnessSection) {
         greatnessSection.style.cssText += `
-          background-image: url('Images/IMG-20250804-WA0036.jpg');
+          background-image: url('Images/IMG-20250818-WA0060.jpg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
