@@ -340,13 +340,15 @@ body {
 /* Greatness Section */
 .greatness-section {
   background-image: url('Images/IMG-20250804-WA0036.jpg');
-  background-size: contain; /* Ensures full image is visible */
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   padding: var(--spacing-xl) 30px;
   box-sizing: border-box;
+  transition: height 0.3s ease;
 }
+
 
 .greatness-overlay {
   background-color: rgba(255, 255, 255, 0.85);
