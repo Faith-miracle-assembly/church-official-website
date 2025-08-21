@@ -344,7 +344,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  padding: var(--spacing-xl) 30px;
+  padding: 200px 30px;
   box-sizing: border-box;
   transition: height 0.3s ease;
 }
