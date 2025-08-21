@@ -7,66 +7,62 @@
   <link rel="icon" href="Images/FMA LOGO.png" type="image/png">
   <style>
     :root {
-      --bg-light: #f9f9f9;
-      --bg-dark: #1a1a1a;
-      --text-light: #000;
-      --text-dark: #fff;
+      --primary: #003366;
+      --secondary: #f8f9fa;
+      --accent: #ff9900;
+      --light-bg: #ffffff;
+      --dark-bg: #1a1a1a;
+      --light-text: #333;
+      --dark-text: #f9f9f9;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
       transition: background 0.3s, color 0.3s;
     }
 
     body.dark-mode {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
+      background: var(--dark-bg);
+      color: var(--dark-text);
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      background: #fff;
-      border-bottom: 1px solid #ccc;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
       display: flex;
       align-items: center;
+      gap: 0.75rem;
     }
 
     .logo img {
-      height: 40px;
-      margin-right: 10px;
+      height: 45px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 1rem;
+    nav a {
+      margin: 0 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      transition: color 0.2s;
     }
-/* Remove underline and inherit color for all nav links */
-nav a {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  text-align: center;
-  margin: 10px;
-  font-weight: bold;
-}
-
-/* Optional: Add hover effect */
-nav a:hover {
-  color: #007BFF; /* Change to your preferred hover color */
-  text-decoration: none;
-}
+    nav a:hover { color: var(--accent); }
 
     .hamburger {
-      display: block;
+      display: none;
+      font-size: 1.8rem;
       cursor: pointer;
     }
 
@@ -75,183 +71,134 @@ nav a:hover {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: #fff;
-      z-index: 1000;
+      background: rgb(156, 156, 252);
       padding: 2rem;
-      overflow-y: auto;
+      z-index: 2000;
     }
+    .menu-overlay.active { display: block; }
 
-    .menu-overlay.active {
-      display: block;
-    }
-
-    .menu-buttons button {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-
-    .language-select, .darkmode-toggle {
-      margin-top: 1rem;
+    .menu-overlay header {
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      color: inherit;
+      padding: 0;
+      box-shadow: none;
+    }
+    .menu-overlay header button {
+      position: fixed;
+      top: 40px;               /* Adjust vertical position */
+      right: -10px;
+      background: red;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: inherit;
     }
 
     .main-content {
       display: flex;
       flex-wrap: wrap;
-      padding: 1rem;
+      gap: 1.5rem;
+      padding: 2rem;
     }
 
     .video-section {
       flex: 2;
-      min-width: 300px;
+      min-width: 320px;
     }
-
     .video-section iframe {
       width: 100%;
-      height: 500px;
+      height: 480px;
+      border-radius: 8px;
     }
 
     .service-section {
       flex: 1;
-      background: #f0f1f0;
-      padding: 1rem;
-      margin-left: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      min-width: 250px;
+      min-width: 280px;
+      background: var(--secondary);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-   .service-section.dark-mode,
-    .prayer-notes-bible.dark-mode,
-    .menu-overlay.dark-mode {
-      background-color: #2a2a2a;
-      color: #fff;
+    .service-section h3 {
+      margin-top: 0;
+      color: var(--primary);
     }
- 
-      
-      
-    
-  
+
+    #countdown {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin: 1rem 0;
+    }
+
     .prayer-notes-bible {
       display: flex;
-      justify-content: space-around;
-      margin-top: 1rem;
-      text-align: center;
+      justify-content: space-between;
+      margin-top: 2rem;
     }
-
-    .prayer-notes-bible div {
+    .prayer-notes-bible a {
       flex: 1;
-      background: #dfd6d6;
-      padding: 1rem;
-      margin:1rem 0.5rem 0 0.5rem;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin: 0 0.3rem;
+      text-decoration: none;
+      color: inherit;
     }
-.prayer-notes-bible {
-  margin-top: 6rem; /* Increased from 2rem to 4rem */
-}
-#nextServiceContainer > div {
-  margin-bottom: 2.5rem; /* Increased from 0.5rem */
-}
-#nextServiceContainer > div {
-  padding: 1rem;
-}
-
-    .footer {
+    .prayer-notes-bible div {
+      background: #e9ecef;
       padding: 1rem;
+      border-radius: 8px;
       text-align: center;
-      background: #f0f0f0;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+      font-size: 1.5rem;
+    }
+    .prayer-notes-bible div:hover {
+      transform: translateY(-3px);
+      background: var(--accent);
+      color: #fff;
     }
 
-    .menu-overlay button {
-      background: none;
-      border: none;
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    footer nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #ddd;
+    }
+    footer nav a:hover { color: #fff; }
+
+    .social-icons a {
+      margin: 0 0.5rem;
       font-size: 1.2rem;
-      cursor: pointer;
-      color: #333;
+      color: #ddd;
+      text-decoration: none;
     }
-
-    .hamburger {
-      position: fixed;
-      top: 60px;
-      right: 1rem;
-      z-index: 1100;
-      font-size: 2rem;
-      background: #fff;
-      padding: 0.5rem;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+    .social-icons a:hover { color: #fff; }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .main-content {
-        flex-direction: column;
-      }
-
-      .service-section {
-        margin-left: 0;
-        margin-top: 1rem;
-      }
-
-      .footer-icons {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 1rem;
-      }
+      nav { display: none; }
+      .hamburger { display: block; }
+      .main-content { flex-direction: column; }
     }
-    .menu-overlay.active {
-  display: block;
-}
-body.dark-mode {
-  background-color: #1a1a1a;
-  color: #fff;
-}
 
-.dark-mode header,
-.dark-mode .service-section,
-.dark-mode .menu-overlay,
-.dark-mode .prayer-notes-bible div,
-.dark-mode .video-section,
-.dark-mode .footer {
-  background-color: #2a2a2a;
-  color: #fff;
-}
-
-.dark-mode select,
-.dark-mode button {
-  background-color: #444;
-  color: #fff;
-  border: 1px solid #666;
-}
-
-.dark-mode a {
-  color: #80c0ff;
-}
-
-.dark-mode .hamburger {
-  background-color: #333;
-  color: #fff;
-}
-.prayer-notes-bible a {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  margin: 10px;
-  text-align: center;
-}
-
+    /* Dark mode specifics */
+    .dark-mode header,
+    .dark-mode .service-section,
+    .dark-mode .menu-overlay {
+      background: #2a2a2a;
+      color: #fff;
+    }
+    .dark-mode nav a { color: #f1f1f1; }
+    .dark-mode footer { background: #000; }
   </style>
 </head>
 <body>
@@ -260,53 +207,41 @@ body.dark-mode {
       <img src="Images/FMA LOGO.jpg" alt="FaithMiracle Assembly Logo" />
       <h2>FaithMiracle Assembly</h2>
     </div>
-    <nav class="nav-links">
+    <nav>
       <a href="#">Connect</a>
       <a href="about-us.html">About</a>
       <a href="#">Small Groups</a>
-      <a href="#">contact</a>
+      <a href="#">Contact</a>
       <a href="index.html">Home</a>
     </nav>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
   <div class="menu-overlay" id="menuOverlay">
-    <div class="logo">
-      <img src="Images/FMA LOGO.jpg" alt="Logo" />
-      <div style="text-align: right;">
-        <button onclick="toggleMenu()">✖</button>
+    <header>
+      <div class="logo">
+        <img src="Images/FMA LOGO.jpg" alt="Logo" />
+        <h2>FaithMiracle Assembly</h2>
       </div>
-      <h2>FaithMiracle Assembly</h2>
-    </div>
-    <nav>
-      <a href="#">Connect</a><br/>
-      <a href="about-us.html">About</a><br/>
-      <a href="#">Small Groups</a><br/>
-      <a href="#">Contact</a><br/>
+      <button onclick="toggleMenu()">✖</button>
+    </header>
+    <hr/>
+    <nav style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+      <a href="#">Connect</a>
+      <a href="about-us.html">About</a>
+      <a href="#">Small Groups</a>
+      <a href="#">Contact</a>
       <a href="index.html">Home</a>
     </nav>
-    <hr/>
-    <div class="menu-buttons">
-      <button onclick="window.open('https://youtube.com')">Subscribe</button>
-      <button onclick="window.open('https://twitter.com')">Follow</button>
-      <button onclick="window.open('https://t.me/joinchat')">Join</button>
-    </div>
-    <div class="menu-section">
-      <div class="language-select">
-        
-      </div>
-      <div class="darkmode-toggle">
-        <label for="darkToggle">Dark Mode:</label>
-        <input type="checkbox" id="darkToggle" onchange="toggleDarkMode()" />
-      </div>
-      <p style="text-align:center; margin-top:2rem;">Church Online Platforms</p>
+    <div style="margin-top:2rem;">
+      <label><input type="checkbox" id="darkToggle" onchange="toggleDarkMode()"> Dark Mode</label>
     </div>
   </div>
 
   <div class="main-content">
     <div class="video-section">
       <iframe src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" frameborder="0" allowfullscreen></iframe>
-      <p>If the livestream doesn't load, visit our <a href="https://youtube.com">YouTube channel</a>.</p>
+      <p style="margin-top:0.5rem;">If the livestream doesn't load, visit our <a href="https://youtube.com" target="_blank">YouTube channel</a>.</p>
     </div>
     <div class="service-section">
       <h3>Next Service</h3>
@@ -316,55 +251,35 @@ body.dark-mode {
         <option value="America/New_York">New York</option>
         <option value="Europe/London">London</option>
       </select>
-      <div id="nextServiceContainer"></div>
-      <div class="prayer-notes-bible">
-  <a href="prayer.html">
-    <div>🙏<br/>Prayer</div>
-  </a>
-  <a href="notes.html">
-    <div>📝<br/>Notes</div>
-  </a>
-  <a href="bible.html">
-    <div>📖<br/>Bible</div>
-  </a>
-</div>
+      <div id="nextServiceContainer" style="margin-top:1rem;"></div>
+      <div id="countdown"></div>
 
+      <div class="prayer-notes-bible">
+        <a href="prayer.html"><div>🕊️<br/>Prayer</div></a>
+        <a href="notes.html"><div>📒<br/>Notes</div></a>
+        <a href="bible.html"><div>📜<br/>Bible</div></a>
+      </div>
     </div>
   </div>
 
-   <footer class="footer">
-    <div class="footer-content">
-      <div class="church-name">Faith Miracle Assembly</div>
-        </div>
-      </div>
-
-      <nav class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="about-us.html">About Us</a>
-        <a href="give.html">Give</a>
-        <a href="#">Contact</a>
-        <a href="#">Prayer Request</a>
-      </nav>
-
-      <div class="social-icons">
-        <a href="https://facebook.com" target="_blank" class="social-icon">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com" target="_blank" class="social-icon">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://youtube.com" target="_blank" class="social-icon">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" class="social-icon">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 Faith Miracle Assembly Church. All rights reserved.</p>
-        <p>Spreading God's love across Delta State and beyond</p>
-      </div>
+  <footer>
+    <div class="church-name"><h3>Faith Miracle Assembly</h3></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="give.html">Give</a>
+      <a href="#">Contact</a>
+      <a href="#">Prayer Request</a>
+    </nav>
+    <div class="social-icons" style="margin-top:1rem;">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://youtube.com" target="_blank">YouTube</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+    <div style="margin-top:1rem;font-size:0.9rem;">
+      <p>&copy; 2025 Faith Miracle Assembly Church. All rights reserved.</p>
+      <p>Spreading God's love across Delta State and beyond</p>
     </div>
   </footer>
 
@@ -378,97 +293,108 @@ body.dark-mode {
       document.body.classList.toggle('dark-mode', isDark);
     }
 
-    function changeLanguage(lang) {
-      alert("Language changed to: " + lang);
-    }
+    const services = {
+      "Africa/Lagos": [
+        { day: "Sunday", times: ["8:00AM", "10:40AM"] },
+        { day: "Tuesday", times: ["11:00AM"] },
+        { day: "Thursday", times: ["5:00PM"] }
+      ],
+      "America/New_York": [
+        { day: "Sunday", times: ["8:00AM", "10:00AM"] },
+        { day: "Wednesday", times: ["7:00PM"] }
+      ],
+      "Europe/London": [
+        { day: "Sunday", times: ["9:00AM", "11:00AM"] },
+        { day: "Friday", times: ["6:00PM"] }
+      ]
+    };
 
-     const services = {
-    "Africa/Lagos": [
-      { day: "Sunday", times: ["8:00AM", "10:40AM"] },
-      { day: "Tuesday", times: ["11:00AM"] },
-      { day: "Thursday", times: ["5:00PM"] }
-    ],
-    "America/New_York": [
-      { day: "Sunday", times: ["8:00AM", "10:00AM"] },
-      { day: "Wednesday", times: ["7:00PM"] }
-    ],
-    "Europe/London": [
-      { day: "Sunday", times: ["9:00AM", "11:00AM"] },
-      { day: "Friday", times: ["6:00PM"] }
-    ]
-  };
+    let countdownTimer;
 
-  function updateServiceTimes() {
-  const tz = document.getElementById('timezone').value;
-  const container = document.getElementById('nextServiceContainer');
-  container.innerHTML = "";
+    function updateServiceTimes() {
+      clearInterval(countdownTimer);
+      const tz = document.getElementById('timezone').value;
+      const container = document.getElementById('nextServiceContainer');
+      container.innerHTML = "";
+      const countdown = document.getElementById('countdown');
+      countdown.innerHTML = "";
 
-  const serviceList = services[tz] || [];
-  const now = new Date();
-  const localTime = new Date(now.toLocaleString("en-US", { timeZone: tz }));
-  const currentDay = localTime.toLocaleDateString("en-US", { weekday: "long" });
-  const currentMinutes = localTime.getHours() * 60 + localTime.getMinutes();
+      const serviceList = services[tz] || [];
+      const now = new Date();
+      const localTime = new Date(now.toLocaleString("en-US", { timeZone: tz }));
+      const currentDay = localTime.toLocaleDateString("en-US", { weekday: "long" });
+      const currentMinutes = localTime.getHours() * 60 + localTime.getMinutes();
 
-  let nextServiceFound = false;
+      let nextService = null;
 
-  serviceList.forEach(service => {
-    const dayContainer = document.createElement('div');
-    const isToday = service.day === currentDay;
+      serviceList.forEach(service => {
+        const dayDiv = document.createElement('div');
+        dayDiv.style.padding = "0.5rem";
+        dayDiv.style.marginBottom = "0.8rem";
+        dayDiv.style.borderRadius = "6px";
+        dayDiv.style.background = "#f1f1f1";
 
-    let highlight = false;
+        service.times.forEach(time => {
+          const [hourStr, minuteStr] = time.replace(/AM|PM/, "").split(":");
+          let hour = parseInt(hourStr);
+          const minute = parseInt(minuteStr);
+          const isPM = time.includes("PM");
 
-    service.times.forEach(time => {
-      const [hourStr, minuteStr] = time.replace(/AM|PM/, "").split(":");
-      let hour = parseInt(hourStr);
-      const minute = parseInt(minuteStr);
-      const isPM = time.includes("PM");
+          if (isPM && hour !== 12) hour += 12;
+          if (!isPM && hour === 12) hour = 0;
 
-      if (isPM && hour !== 12) hour += 12;
-      if (!isPM && hour === 12) hour = 0;
+          const serviceMinutes = hour * 60 + minute;
 
-      const serviceMinutes = hour * 60 + minute;
+          if (!nextService && (
+            (service.day === currentDay && serviceMinutes > currentMinutes) ||
+            (service.day !== currentDay)
+          )) {
+            nextService = { day: service.day, time: time };
+          }
+        });
 
-      if (!nextServiceFound && (
-        (isToday && serviceMinutes > currentMinutes) ||
-        (!isToday && !nextServiceFound)
-      )) {
-        highlight = true;
-        nextServiceFound = true;
+        dayDiv.innerHTML = `<strong>${service.day}</strong><br/>${service.times.join("<br/>")}`;
+        container.appendChild(dayDiv);
+      });
+
+      if (nextService) {
+        startCountdown(nextService, tz);
       }
-    });
-
-    dayContainer.innerHTML = `<strong>${service.day}</strong><br/>${service.times.join("<br/>")}`;
-    if (highlight) {
-      dayContainer.style.backgroundColor = "#ffe680"; // light yellow
-      dayContainer.style.border = "2px solid #ff9900";
     }
-    container.appendChild(dayContainer);
-  });
-}
 
-  // Call it on page load
-  window.onload = updateServiceTimes;
+    function startCountdown(nextService, tz) {
+      const countdown = document.getElementById('countdown');
+      function update() {
+        const now = new Date();
+        const localNow = new Date(now.toLocaleString("en-US", { timeZone: tz }));
+        let target = new Date(localNow);
+        const [hourStr, minuteStr] = nextService.time.replace(/AM|PM/, "").split(":");
+        let hour = parseInt(hourStr);
+        const minute = parseInt(minuteStr);
+        const isPM = nextService.time.includes("PM");
+        if (isPM && hour !== 12) hour += 12;
+        if (!isPM && hour === 12) hour = 0;
+        target.setHours(hour, minute, 0, 0);
 
-  document.addEventListener('fullscreenchange', () => {
-    const isFullscreen = !!document.fullscreenElement;
+        if (target < localNow) target.setDate(target.getDate() + 7);
 
-    // Always show hamburger
-    document.querySelector('.hamburger').style.display = 'block';
+        const diff = target - localNow;
+        if (diff <= 0) {
+          countdown.innerHTML = "Service is live now!";
+          clearInterval(countdownTimer);
+          return;
+        }
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Hide service section and prayer-notes in fullscreen
-    document.querySelector('.service-section').style.display = isFullscreen ? 'none' : 'block';
-    document.querySelector('.prayer-notes-bible').style.display = isFullscreen ? 'none' : 'flex';
+        countdown.innerHTML = `⏳ Next Service (${nextService.day} at ${nextService.time}) starts in: ${hours}h ${minutes}m ${seconds}s`;
+      }
+      update();
+      countdownTimer = setInterval(update, 1000);
+    }
 
-    // Show menu overlay in fullscreen
-    const menu = document.getElementById('menuOverlay');
-    menu.style.display = isFullscreen ? 'block' : '';
-    if (!isFullscreen) menu.classList.remove('active');
-  });
-
-  function toggleMenu() {
-    const overlay = document.getElementById('menuOverlay');
-    overlay.classList.toggle('active');
-  }
+    window.onload = updateServiceTimes;
   </script>
 </body>
 </html>
