@@ -788,26 +788,6 @@
     });
 
     console.log('🙏 Faith Miracle Assembly - What We Believe page loaded successfully!');
-     function adjustHeaderBackground() {
-    const header = document.querySelector('.header-background');
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 1200) {
-      // Large screen: adjust background for better visibility
-      header.style.backgroundSize = 'contain';
-      header.style.backgroundPosition = 'center top';
-    } else {
-      // Default for smaller screens
-      header.style.backgroundSize = 'cover';
-      header.style.backgroundPosition = 'center center';
-    }
-  }
-
-  // Run on page load
-  window.addEventListener('load', adjustHeaderBackground);
-
-  // Run on window resize
-  window.addEventListener('resize', adjustHeaderBackground);
   </script>
 </body>
 </html>
