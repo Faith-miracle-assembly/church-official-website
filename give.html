@@ -3,23 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FaithMiracle Assembly</title>
+  <title>FaithMiracle Assembly - Giving</title>
   <link rel="icon" href="Images/FMA LOGO.png" type="image/png">
   <style>
+    /* ===== Global Styles ===== */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f8f9fb;
       color: #333;
+      line-height: 1.6;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2 {
+      margin: 0 0 1rem;
+      font-weight: 700;
+    }
+
+    /* ===== Header ===== */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      background: white;
-      border-bottom: 1px solid #ccc;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo-container {
@@ -28,170 +44,160 @@
     }
 
     .logo {
-      height: 40px;
+      height: 42px;
       margin-right: 10px;
     }
 
     .church-name {
-      font-weight: bold;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #012b47;
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: #333;
+      font-weight: 500;
+      color: #012b47;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0077cc;
     }
 
     .hamburger {
       display: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
+      color: #012b47;
     }
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
 
+    /* ===== Mobile Dropdown Menu ===== */
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: white;
-      padding: 1rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
     }
 
     .mobile-menu.show {
       display: flex;
     }
 
-    .mobile-header {
+    .mobile-menu a {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      font-size: 1.05rem;
+      color: #012b47;
+    }
+
+    .mobile-menu a:hover {
+      background: #f5f9ff;
+      color: #0077cc;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      min-height: 90vh;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: flex-start;
+      color: white;
+      padding: 3rem 2rem;
     }
 
-    .mobile-nav a {
-      margin: 0.5rem 0;
-      text-decoration: none;
-      color: #333;
+    .hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
     }
 
-  .hero {
-  position: relative;
-  color: white;
-  padding: 4rem 2rem;
-  text-align: left;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+      z-index: -1;
+    }
 
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
+    .hero-content {
+      max-width: 600px;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  margin-top: -3rem; /* Moves h1 up */
-}
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
 
-.hero-content h1 {
-  font-weight: 800;
-  font-size: 2.5em;
-  color: #f0f2f3;
-  margin-bottom: 2rem;
-}
-
-.hero-content p {
-  font-weight: 600;
-  font-size: 1.2em;
-  color: #f2f2f3;
-  margin-bottom: 1.5rem; /* Adds space between paragraphs */
-}
-
-/* 📱 Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .hero {
-    padding: 2rem 1rem;
-  }
-
-  .hero-content {
-    margin-top: -1rem;
-  }
-
-  .hero-content h1 {
-    font-size: 2em;
-    text-align: center;
-  }
-
-  .hero-content p {
-    font-size: 1em;
-    text-align: center;
-  }
-
-  button {
-    display: block;
-    margin: 1rem auto;
-  }
-}
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
 
     .hero button {
       margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: white;
-      color: #333;
+      padding: 0.75rem 1.5rem;
+      background: #0077cc;
+      color: white;
+      font-weight: 600;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
+    .hero button:hover {
+      background: #005fa3;
+    }
+
+    /* ===== Giving Section ===== */
     .giving-section {
-      padding: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .box-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
 
     .box {
       background: white;
-      padding: 1.5rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
-.box-grid .box:nth-child(1) {
-  background-color: #e8f5e9; /* Light green for Local Payments */
-}
 
-.box-grid .box:nth-child(2) {
-  background-color: #e3f2fd; /* Light blue for International Payments */
-}
+    .box:hover {
+      transform: translateY(-5px);
+    }
 
-.box-grid .box:nth-child(3) {
-  background-color: #fff3e0; /* Light orange for International Church */
-}
-
-.box-grid .box:nth-child(4) {
-  background-color: #fce4ec; /* Light pink for Pay With Card */
-}
+    .box h2 {
+      font-size: 1.4rem;
+      color: #012b47;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
     .bank {
       display: flex;
@@ -204,10 +210,24 @@
       height: 40px;
     }
 
+    .bank-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .account-number {
+      margin-top: 0.3rem;
+      font-size: 1rem;
+      color: #0077cc;
+      font-weight: 600;
+    }
+
     .card-options {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .card {
@@ -215,10 +235,11 @@
       border-radius: 8px;
       text-align: center;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .flutterwave {
-      background: white;
+      background: #fff;
       border: 1px solid #ccc;
     }
 
@@ -226,67 +247,50 @@
       background: #007bff;
       color: white;
     }
-.site-footer {
-  background-color: #01141f;
-  color: #f0eded;
-  padding: var(--spacing-medium) var(--spacing-small);
-  text-align: center;
-  font-size: 0.9rem;
-  border-top: 1px solid #ddd;
-  margin-top: 0;
-  padding-top: 0;
-}
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background: #01141f;
+      color: #dfe6eb;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .site-footer p {
+      margin: 0.5rem 0;
+    }
+
     .footer-nav {
-  margin-top: 8px;
-}
-
-.footer-nav a {
-  color: #0077cc;
-  text-decoration: none;
-  margin: 0 8px;
-}
-
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-
-.divider {
-  color: #999;
-}
-
-.social-icons {
-  margin: 15px 0;
-}
-
-.social-icons a {
-  margin: 0 6px;
-  display: inline-block;
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-}
-
-    .bank-column {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
 
-    .account-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .footer-nav a {
+      color: #88c0ff;
+      margin: 0 8px;
+      font-size: 0.95rem;
     }
 
-    .account-number {
-      margin-left: 1rem;
-      font-size: 1rem;
+    .footer-nav a:hover {
+      text-decoration: underline;
     }
 
+    .social-icons {
+      margin: 1.2rem 0;
+    }
+
+    .social-icons a {
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 26px;
+      height: 26px;
+      vertical-align: middle;
+      filter: brightness(0) invert(1);
+    }
+
+    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -296,15 +300,14 @@
         display: block;
       }
 
-      .box-grid {
-        grid-template-columns: 1fr;
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
       }
     }
-    .box em {
-  color: #d35400;
-  font-weight: bold;
-}
-
   </style>
 </head>
 <body>
@@ -324,50 +327,36 @@
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Dropdown Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-header">
-      <img src="your-logo.png" alt="FaithMiracle Logo" class="logo" />
-      <span class="church-name">FaithMiracle Assembly</span>
-      <button onclick="toggleMenu()">✖</button>
-    </div>
-    <nav class="mobile-nav">
-      <a href="index.html">Home</a>
-      <a href="livestream.html">Livestream</a>
-      <a href="about-us.html">About Us</a>
-      <a href="give.html">Give</a>
-    </nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="livestream.html">📺 Livestream</a>
+    <a href="about-us.html">ℹ️ About Us</a>
+    <a href="give.html">💝 Give</a>
   </div>
 
   <!-- Hero Section -->
- <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="Images/Tithes & Offering 6.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="Images/Tithes & Offering 6.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-  <div class="hero-content">
-    <h1 style="font-weight: 800; font-size: 2.5em; color: #f0f2f3;">
-      Your Giving Is Changing the World
-    </h1>
-    <p style="font-weight: 600; font-size: 1.2em; color: #f7f7f8;">
-      We believe in the power of generosity! At <strong>FaithMiracle Assembly</strong>, 
-      tithes and offerings are joyful expressions of gratitude for God’s blessings.
-    </p>
-    <p style="font-weight: 600; font-size: 1.2em; color: #f2f2f3;">
-      Explore the different ways you can contribute below and be part of a movement that transforms lives.
-    </p>
-    <button onclick="document.getElementById('givingSection').scrollIntoView()">Give Now</button>
-  </div>
-</section>
-
+    <div class="hero-content">
+      <h1>Your Giving Is Changing the World</h1>
+      <p>We believe in the power of generosity! At <strong>FaithMiracle Assembly</strong>, 
+      tithes and offerings are joyful expressions of gratitude for God’s blessings.</p>
+      <p>Explore the different ways you can contribute below and be part of a movement that transforms lives.</p>
+      <button onclick="document.getElementById('givingSection').scrollIntoView()">Give Now</button>
+    </div>
+  </section>
 
   <!-- Giving Section -->
   <section id="givingSection" class="giving-section">
     <div class="box-grid">
       <!-- Local Payments -->
       <div class="box">
-        <h2>Local Payments</h2>
+        <h2>🏦 Local Payments</h2>
         <div class="bank">
           <img src="gtbank-logo.png" alt="GTBank" />
           <p>Offering: *737*32*Amount*2201#<br/>Tithe: *737*32*Amount*2202#<br/>A/C No: 0019827596<br/>A/C Name: FaithMiracle Assembly</p>
@@ -384,7 +373,7 @@
 
       <!-- International Payments -->
       <div class="box">
-        <h2>International Payments</h2>
+        <h2>🌍 International Payments</h2>
         <div class="bank-column">
           <div class="account-block">
             <strong>A/C Name:</strong> FaithMiracle Assembly  
@@ -403,7 +392,7 @@
 
       <!-- International Church -->
       <div class="box">
-        <h2>International Church</h2>
+        <h2>⛪ International Church</h2>
         <div class="bank">
           <p>A/C Name: Pistis Life Church<br/>Bank: Wells Fargo<br/>💵 6188644220</p>
         </div>
@@ -413,53 +402,41 @@
       </div>
 
       <!-- Pay With Card -->
-      <!-- Pay With Card -->
-<div class="box">
-  <h2>Pay With Card</h2>
-  <p><em>💳 Card payments coming soon! Stay tuned for secure and convenient options.</em></p>
-  <p>We offer convenient and secure ways to make credit and debit card payments. Please select your preferred option below:</p>
-  <div class="card-options">
-    <div class="card flutterwave">Flutterwave 💳</div>
-    <div class="card paystack">Paystack 💳</div>
-  </div>
-</div>
-
+      <div class="box">
+        <h2>💳 Pay With Card</h2>
+        <p><em>Card payments coming soon! Stay tuned for secure and convenient options.</em></p>
+        <div class="card-options">
+          <div class="card flutterwave">Flutterwave 💳</div>
+          <div class="card paystack">Paystack 💳</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
-  <p>© 2025 Faith Miracle Assembly Church. All rights reserved.</p>
-
-  <nav class="footer-nav">
-    <a href="index.html" target="_blank">Attend Faith Miracle Assembly Online</a>
-    <span class="divider">|</span>
-    <a href="https://faith-miracle-assembly.github.io/church-official-website/" target="_blank">The Faith Miracle Assembly Church Location</a>
-    <span class="divider">|</span>
-    <a href="contact.html" target="_blank">Contact Us</a>
-    <span class="divider">|</span>
-    <a href="livestream.html" target="_blank">Watch</a>
-    <span class="divider">|</span>
-    <a href="expression.html" target="_blank">Locations</a>
-    <span class="divider">|</span>
-    <a href="project-giving.html" target="_blank">Give</a>
-    <span class="divider">|</span>
-    <a href="careers.html" target="_blank">Careers</a>
-  </nav>
-
-  <div class="social-icons">
-    <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter" loading="lazy"></a>
-    <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn" loading="lazy"></a>
-    <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook" loading="lazy"></a>
-    <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram" loading="lazy"></a>
-    <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube" loading="lazy"></a>
-  </div>
-
-  <nav class="footer-nav">
-    <a href="#">Privacy Policy</a>
-    <span class="divider">|</span>
-    <a href="#">Terms and Conditions</a>
-  </nav>
-</footer>
+    <p>© 2025 Faith Miracle Assembly Church. All rights reserved.</p>
+    <nav class="footer-nav">
+      <a href="index.html" target="_blank">Attend Online</a> |
+      <a href="https://faith-miracle-assembly.github.io/church-official-website/" target="_blank">Location</a> |
+      <a href="contact.html" target="_blank">Contact Us</a> |
+      <a href="livestream.html" target="_blank">Watch</a> |
+      <a href="expression.html" target="_blank">Locations</a> |
+      <a href="project-giving.html" target="_blank">Give</a> |
+      <a href="careers.html" target="_blank">Careers</a>
+    </nav>
+    <div class="social-icons">
+      <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter"></a>
+      <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn"></a>
+      <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook"></a>
+      <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram"></a>
+      <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube"></a>
+    </div>
+    <nav class="footer-nav">
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms and Conditions</a>
+    </nav>
+  </footer>
 
   <script>
     function toggleMenu() {
