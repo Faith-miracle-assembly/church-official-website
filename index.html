@@ -2,278 +2,407 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- SEO and Social Sharing Metadata -->
-  <meta name="description" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE. We are more than a church, we are a family. Join our vibrant community for worship, prayer, and spiritual growth.">
-  <meta name="keywords" content="Faith Miracle Assembly, church, worship, prayer, community, Grace House, spiritual growth">
-  <meta property="og:title" content="Faith Miracle Assembly Church - Welcome to GRACE HOUSE">
-  <meta property="og:description" content="We are more than a church, we are a family. Join our vibrant community for worship and spiritual growth.">
-  <meta property="og:image" content="Images/FMA LOGO.jpg">
-  <meta property="og:url" content="https://faith-miracle-assembly.github.io/church-official-website/">
-  
-  <!-- Performance: Preload critical resources -->
-  <link rel="preload" href="Styles/index.css" as="style">
-  <link rel="preload" href="Images/FMA LOGO.jpg" as="image">
-  
-  <!-- Performance: Critical CSS inline -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a2a6b" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+
+  <!-- SEO -->
+  <title>Faith Miracle Assembly Church — Welcome to GRACE HOUSE</title>
+  <meta name="description" content="Faith Miracle Assembly Church (GRACE HOUSE). We are more than a church—we are a family. Join our vibrant community for worship, prayer, and spiritual growth." />
+  <meta name="keywords" content="Faith Miracle Assembly, church, worship, prayer, community, Grace House, spiritual growth" />
+  <link rel="canonical" href="https://faith-miracle-assembly.github.io/church-official-website/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Faith Miracle Assembly Church — Welcome to GRACE HOUSE" />
+  <meta property="og:description" content="We are more than a church — we are a family. Join our vibrant community for worship and spiritual growth." />
+  <meta property="og:url" content="https://faith-miracle-assembly.github.io/church-official-website/" />
+  <meta property="og:image" content="https://faith-miracle-assembly.github.io/church-official-website/Images/FMA%20LOGO.jpg" />
+  <meta property="og:site_name" content="Faith Miracle Assembly" />
+
+  <!-- Icons -->
+  <link rel="icon" href="Images/FMA LOGO.png" type="image/png" />
+
+  <!-- Performance: fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" /></noscript>
+
+  <!-- Performance: critical CSS (minimal above-the-fold) -->
   <style>
-    /* Critical CSS - Above the fold styles */
-    body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    .fma-header { position: relative; width: 100%; height: 100vh; overflow: hidden; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    .header-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-    .header-top { position: absolute; top: 0; left: 0; width: 100%; padding: 0px 25px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 10; }
-    .logo { height: 40px; width: 40px; }
-    .church-name { font-size: 1rem; font-weight: bold; color: white; margin: 0; }
+    :root { --bg:#0a2a6b; --text:#111; --white:#fff; }
+    html,body { height:100%; }
+    body { margin:0; font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif; color:var(--text); background:#f9fafb; }
+    .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { left:1rem; top:1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; border-radius:.5rem; z-index:10000; }
+
+    header.fma-header { position:relative; width:100%; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; text-align:center; overflow:hidden; }
+    .header-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+    .header-top { position:absolute; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; z-index:10; }
+    .logo-link { display:flex; align-items:center; gap:.6rem; text-decoration:none; color:#fff; }
+    .logo { width:40px; height:40px; border-radius:6px; }
+    .church-name { font-weight:700; font-size:1rem; letter-spacing:.2px; }
+
+    nav.primary { display:flex; align-items:center; gap:1rem; }
+    nav.primary a { color:#fff; text-decoration:none; font-weight:500; }
+
+    .hamburger-btn { display:none; background:transparent; border:0; color:#fff; font-size:1.75rem; line-height:1; padding:.25rem .5rem; border-radius:.5rem; }
+
+    /* Mobile menu */
+    .mobile-menu { position:fixed; inset:0 0 0 auto; width:min(85%, 360px); background:rgba(10,42,107,.98); transform:translateX(100%); transition:transform .25s ease; padding:24px; display:flex; flex-direction:column; gap:12px; z-index:9999; }
+    .mobile-menu.open { transform:translateX(0); }
+    .mobile-menu a { color:#fff; text-decoration:none; padding:10px 12px; border-radius:8px; background:rgba(255,255,255,.06); }
+    .mobile-close { align-self:flex-end; background:transparent; border:0; color:#fff; font-size:1.5rem; }
+
+    .header-content { margin-top:80px; padding:0 16px; }
+    .header-content h1 { font-size:clamp(1.75rem, 4vw + 1rem, 3rem); margin:.25rem 0; }
+    .header-content h2 { margin:.25rem 0 1rem; letter-spacing:.5px; }
+
+    .action-boxes { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:18px 0 0; }
+    .action-boxes .box { display:inline-block; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:700; }
+    .box.blue { background:#2563eb; color:#fff; }
+    .box.white { background:#fff; color:#111; }
+    .box.green { background:#10b981; color:#062; }
+
+    /* Sections */
+    section { padding:48px 16px; }
+    .welcome-section { background:#fff; display:grid; gap:24px; grid-template-columns:1fr; max-width:1200px; margin-inline:auto; }
+    .welcome-text h2 { margin-top:0; }
+    .join-box a { display:inline-block; padding:10px 16px; border-radius:8px; background:#0a2a6b; color:#fff; text-decoration:none; font-weight:600; }
+
+    .slideshow-box { overflow:hidden; border-radius:16px; }
+    .slideshow { display:flex; gap:0; animation:slideX 24s infinite linear; }
+    .slideshow img { width:100%; height:320px; object-fit:cover; flex:0 0 100%; }
+    @keyframes slideX { 0%{transform:translateX(0);} 20%{transform:translateX(-100%);} 40%{transform:translateX(-200%);} 60%{transform:translateX(-300%);} 80%{transform:translateX(-400%);} 100%{transform:translateX(-500%);} }
+
+    .flyer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; max-width:1200px; margin-inline:auto; }
+    .flyer-item { display:block; border-radius:12px; overflow:hidden; background:#eef2ff; }
+    .flyer-item img { width:100%; height:220px; object-fit:cover; display:block; }
+
+    .greatness-section { position:relative; background:linear-gradient(180deg, rgba(10,42,107,.9), rgba(10,42,107,.6)), url('Images/faith.jpg') center/cover no-repeat; color:#fff; }
+    .greatness-content { max-width:900px; margin-inline:auto; text-align:center; }
+    .join-btn { display:inline-block; margin-top:12px; background:#22c55e; color:#063; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:700; }
+
+    .support-section { background:#fff; }
+    .support-content { max-width:900px; margin-inline:auto; text-align:center; }
+    .support-btn { display:inline-block; margin:8px; padding:10px 14px; border-radius:10px; background:#0a2a6b; color:#fff; text-decoration:none; font-weight:600; }
+
+    .connect-row { background:#f1f5f9; }
+    .connect-header { text-align:center; margin:0 0 16px; }
+    .connect-cards { max-width:1200px; margin-inline:auto; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .connect-card { display:block; overflow:hidden; border-radius:12px; background:#fff; }
+    .connect-card img { width:100%; height:220px; object-fit:cover; display:block; }
+
+    .lead-pastor-section .pastor-bg { background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('Images/IMG-20250818-WA0067.jpg') center/cover no-repeat; color:#fff; }
+    .lead-pastor-section .pastor-content { max-width:900px; margin-inline:auto; padding:48px 16px; }
+    .learn-link { display:inline-block; margin-top:10px; color:#fff; background:rgba(255,255,255,.12); padding:10px 14px; border-radius:8px; text-decoration:none; }
+
+    footer.site-footer { background:#0a2a6b; color:#fff; text-align:center; padding:24px 12px; }
+    .footer-nav { display:flex; flex-wrap:wrap; justify-content:center; gap:8px 14px; margin-top:8px; }
+    .footer-nav a { color:#fff; text-decoration:none; opacity:.95; }
+    .social-icons { margin:14px 0; display:flex; justify-content:center; gap:12px; }
+    .social-icons img { width:28px; height:28px; display:block; }
+
+    @media (max-width: 900px) {
+      nav.primary { display:none; }
+      .hamburger-btn { display:inline-block; }
+      .welcome-section { grid-template-columns:1fr; }
+    }
+    @media (min-width: 901px) {
+      .welcome-section { grid-template-columns: 1.1fr .9fr; align-items:center; }
+    }
   </style>
-  
-  <title>Faith Miracle Assembly Church</title>
-  <link rel="icon" href="Images/FMA LOGO.png" type="image/png">
-  <link rel="stylesheet" href="Styles/index.css" />
-  <link rel= "preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Performance: non-critical CSS -->
+  <link rel="preload" href="Styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="Styles/index.css" /></noscript>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Faith Miracle Assembly Church",
+    "url": "https://faith-miracle-assembly.github.io/church-official-website/",
+    "logo": "https://faith-miracle-assembly.github.io/church-official-website/Images/FMA%20LOGO.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "",
+      "addressRegion": "",
+      "addressCountry": "Nigeria"
+    },
+    "sameAs": [
+      "https://facebook.com",
+      "https://instagram.com",
+      "https://youtube.com",
+      "https://twitter.com",
+      "https://linkedin.com"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <header class="fma-header">
-  <!-- Background Video - Performance Optimized -->
-  <video autoplay muted playsinline class="header-video" preload="metadata">
-    <source src="Images/fma-background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <header class="fma-header" role="banner">
+    <!-- Background Video -->
+    <video class="header-video" autoplay muted playsinline preload="metadata" poster="Images/fma-poster.jpg">
+      <source src="Images/fma-background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-  <!-- Image Slideshow - Performance Optimized with Lazy Loading -->
-  <div class="image-slider">
-    <img src="Images/IMG-20250804-WA0035.jpg" class="slide active" alt="Faith Miracle Assembly Church Service">
-    <img src="Images/IMG-20250804-WA0028.jpg" class="slide" loading="lazy" alt="Church Community Gathering">
-    <img src="Images/IMG-20250818-WA0063.jpg" class="slide" loading="lazy" alt="Worship Service">
-    <img src="Images/IMG-20250818-WA0070.jpg" class="slide" loading="lazy" alt="Church Fellowship">
-    <img src="Images/IMG-20250804-WA0015.jpg" class="slide" loading="lazy" alt="Prayer Meeting">
-    <img src="Images/IMG-20250818-WA0059.jpg" class="slide" loading="lazy" alt="Church Event">
-    <img src="Images/IMG-20250818-WA0065.jpg" class="slide" loading="lazy" alt="Community Outreach">
-    <img src="Images/IMG-20250804-WA0026.jpg" class="slide" loading="lazy" alt="Church Service">
-    <img src="Images/IMG-20250818-WA0058.jpg" class="slide" loading="lazy" alt="Worship Experience">
-    <img src="Images/IMG-20250818-WA0067.jpg" class="slide" loading="lazy" alt="Church Community">
-  </div>
+    <!-- Top Bar -->
+    <div class="header-top">
+      <a href="index.html" class="logo-link" aria-label="Faith Miracle Assembly Home">
+        <img src="Images/FMA LOGO.jpg" alt="Faith Miracle Assembly logo" class="logo" width="40" height="40" />
+        <span class="church-name">Faith Miracle Assembly</span>
+      </a>
 
-  <!-- Top Navigation Bar -->
-  <div class="header-top">
-    <a href="index.html" class="logo-link">
-      <img src="Images/FMA LOGO.jpg" alt="Faith Miracle Assembly Logo" class="logo" />
-      <div class="church-name">Faith Miracle Assembly</div>
-    </a>
-    <!-- Hamburger Icon (visible on mobile) -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
+      <nav class="primary" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="livestream.html" target="_blank" rel="noopener">Livestream</a>
+        <a href="give.html">Give</a>
+        <a href="expression.html">Expressions</a>
+        <a href="media.html">Media</a>
+        <a href="about-us.html">About Us</a>
+      </nav>
 
-<!-- Navigation Menu -->
-<nav class="nav-links" id="mobileMenu"> 
-  <div class="close-btn" onclick="toggleMenu()">×</div>
-  <a href="index.html">Home</a>
-  <a href="livestream.html"target="_blank" >Livestream</a>
-  <a href="give.html">Give</a>
-  <a href="expression.html">Expressions</a>
-  <a href="#">Media</a>
-  <a href="about-us.html">About Us</a>
-</nav>
-
-  </div>
-
-  <!-- Main Header Content -->
-  <div class="header-content">
-    <h1>Faith Miracle Assembly</h1>
-   <h2>WORSHIP WITH US</h2>
-
-    <p><strong>It is with great joy and excitement</strong> that we welcome you to church.</p>
-
-    <p><strong>We are more than a church</strong> — we are a <em>family</em>.</p>
-
-   <p>We invite you to discover <strong>who we are</strong>, <strong>what we're called to do</strong>, <strong>how we do it</strong>, and <strong>where you fit in</strong>.</p>
-
-   <p><strong>Welcome to GRACE HOUSE.</strong></p>
-
-  </div>
-
-  <div class="action-boxes">
-    <a href="expression.html" target="_blank" class="box blue">Find a Location</a>
-    <a href="livestream.html" target="_blank" class="box white">Attend Online</a>
-    <a href="#" target="_blank" class="box green">Become a Member</a>
-  </div>
-</header>
-
- <section class="welcome-section">
-  <div class="welcome-text">
-    <h2>You Are Welcome Here!</h2>
-    <p>New to <strong>Faith Miracle Assembly (GRACE HOUSE)</strong>? Step into a vibrant family of faith, love, and purpose—where you're empowered to embrace your God-given greatness.</p>
-    <p>Here, we serve both <strong>God and humanity</strong> with passion and grace. At our core, we believe in <em>living differently, leading boldly</em>, and walking in divine favor.</p>
-    <div class="join-box">
-    <a href="about-us.html">JOIN OUR FAMILY</a>
+      <!-- Mobile hamburger -->
+      <button class="hamburger-btn" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
     </div>
-  </div>
 
-  <div class="slideshow-box">
-    <div class="slideshow">
-      <img src="Images/IMG-20250804-WA0036.jpg" alt="Church Community" loading="lazy">
-      <img src="Images/faith.jpg" alt="Worship Experience" loading="lazy">
-      <img src="Images/IMG-20250818-WA0060.jpg" alt="Church Service" loading="lazy">
-      <img src="Images/image8.jpg" alt="Faith Miracle Assembly" loading="lazy">
-      <img src="Images/IMG-20250818-WA0064.jpg" alt="Prayer Meeting" loading="lazy">
+    <!-- Mobile Menu Drawer -->
+    <aside class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Mobile">
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+      <a href="index.html">Home</a>
+      <a href="livestream.html" target="_blank" rel="noopener">Livestream</a>
+      <a href="give.html">Give</a>
+      <a href="expression.html">Expressions</a>
+      <a href="media.html">Media</a>
+      <a href="about-us.html">About Us</a>
+    </aside>
+
+    <!-- Hero copy -->
+    <div class="header-content" role="presentation">
+      <h1>Faith Miracle Assembly</h1>
+      <h2>WORSHIP WITH US</h2>
+      <p><strong>It is with great joy and excitement</strong> that we welcome you to church.</p>
+      <p><strong>We are more than a church</strong> — we are a <em>family</em>.</p>
+      <p>Discover <strong>who we are</strong>, <strong>what we're called to do</strong>, <strong>how we do it</strong>, and <strong>where you fit in</strong>.</p>
+      <p><strong>Welcome to GRACE HOUSE.</strong></p>
     </div>
-  </div>
-</section>
 
-<!-- Performance Optimized Flyer Grid with Lazy Loading -->
-<section class="flyer-grid">
-  <a href="#" class="flyer-item">
-    <img src="Images/blood for blood 2025.jpg" alt="Join Our Community" loading="lazy">
-  </a>
-  <a href="#" class="flyer-item">
-    <img src="Images/Church flyer.jpg" alt="Ask for Prayer" loading="lazy">
-  </a>
-
-  <a href="#" class="flyer-item">
-    <img src="Images/new dawn 2025.jpg" alt="Worship With Us" loading="lazy">
-  </a>
-  <a href="#" class="flyer-item">
-    <img src="Images/grace for exploit 2025.jpg" alt="Need Counselling?" loading="lazy">
-  </a>
-
-  <a href="#" class="flyer-item">
-    <img src="Images/he touched me 2025.jpg" alt="Upcoming Events" loading="lazy">
-  </a>
-  <a href="#" class="flyer-item">
-    <img src="Images/timelyhelp 2025.jpg" alt="Meet Our Pastors" loading="lazy">
-  </a>
-</section>
-
-<section class="greatness-section">
-  <div class="greatness-overlay">
-    <div class="greatness-content">
-      <h2>Join the Nahemaihs Family!</h2>
-     <p>
-       Just as Nehemiah rose with courage to rebuild the walls of Jerusalem, we too are called to build lives of purpose, unity, and spiritual strength. The Nahemaihs Family is more than a community—it's a divine assignment.
-     </p>
-     <p>
-      We believe in the power of godly connections, the beauty of shared vision, and the strength of a loving spiritual family. Here, you'll find passionate believers walking together in faith, just as Nehemiah rallied his people to restore what was broken.
-    </p>
-    <p>
-      Join us to experience spiritual growth, divine restoration, and meaningful relationships. Together, we rise to build, to heal, and to fulfill destiny.
-    </p>
-    <a href="#" target="_blank" class="join-btn">JOIN OUR COMMUNITY</a>
+    <div class="action-boxes" role="navigation" aria-label="Quick actions">
+      <a href="expression.html" target="_blank" rel="noopener" class="box blue">Find a Location</a>
+      <a href="livestream.html" target="_blank" rel="noopener" class="box white">Attend Online</a>
+      <a href="membership.html" class="box green">Become a Member</a>
     </div>
-  </div>
-  </section>
+  </header>
 
+  <main id="main" tabindex="-1">
+    <section class="welcome-section" aria-labelledby="welcome-title">
+      <div class="welcome-text">
+        <h2 id="welcome-title">You Are Welcome Here!</h2>
+        <p>New to <strong>Faith Miracle Assembly (GRACE HOUSE)</strong>? Step into a vibrant family of faith, love, and purpose—where you're empowered to embrace your God-given greatness.</p>
+        <p>Here, we serve both <strong>God and humanity</strong> with passion and grace. At our core, we believe in <em>living differently, leading boldly</em>, and walking in divine favor.</p>
+        <div class="join-box">
+          <a href="about-us.html">Join Our Family</a>
+        </div>
+      </div>
 
-<section class="support-section">
-  <div class="support-content">
-    <h2>Need Counselling?</h2>
-    <p>
-      Are you facing challenges, seeking guidance, or simply need someone to talk to? We are here for you.
-    </p>
-    <p>
-      Our dedicated team of counselors is available to provide confidential and compassionate support, free of charge.
-    </p>
-    <a href="counselling.html" class="support-btn">Request Counselling</a>
+      <div class="slideshow-box" aria-hidden="true">
+        <div class="slideshow">
+          <img src="Images/IMG-20250804-WA0036.jpg" alt="" loading="lazy" decoding="async" width="1200" height="320" />
+          <img src="Images/faith.jpg" alt="" loading="lazy" decoding="async" width="1200" height="320" />
+          <img src="Images/IMG-20250818-WA0060.jpg" alt="" loading="lazy" decoding="async" width="1200" height="320" />
+          <img src="Images/image8.jpg" alt="" loading="lazy" decoding="async" width="1200" height="320" />
+          <img src="Images/IMG-20250818-WA0064.jpg" alt="" loading="lazy" decoding="async" width="1200" height="320" />
+        </div>
+      </div>
+    </section>
 
-    <h3>Ask for Prayer</h3>
-    <p>
-      We believe in the power of prayer. Share your request and let us stand with you in faith.
-    </p>
-    <a href="prayer.html" class="support-btn">Submit Prayer Request</a>
-  </div>
-</section>
+    <!-- Image Slider (hero gallery) -->
+    <section class="image-slider" aria-label="Highlights">
+      <img src="Images/IMG-20250804-WA0035.jpg" class="slide active" alt="Faith Miracle Assembly Church service" width="1600" height="900" />
+      <img src="Images/IMG-20250804-WA0028.jpg" class="slide" loading="lazy" decoding="async" alt="Church community gathering" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0063.jpg" class="slide" loading="lazy" decoding="async" alt="Worship service" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0070.jpg" class="slide" loading="lazy" decoding="async" alt="Church fellowship" width="1600" height="900" />
+      <img src="Images/IMG-20250804-WA0015.jpg" class="slide" loading="lazy" decoding="async" alt="Prayer meeting" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0059.jpg" class="slide" loading="lazy" decoding="async" alt="Church event" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0065.jpg" class="slide" loading="lazy" decoding="async" alt="Community outreach" width="1600" height="900" />
+      <img src="Images/IMG-20250804-WA0026.jpg" class="slide" loading="lazy" decoding="async" alt="Church service" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0058.jpg" class="slide" loading="lazy" decoding="async" alt="Worship experience" width="1600" height="900" />
+      <img src="Images/IMG-20250818-WA0067.jpg" class="slide" loading="lazy" decoding="async" alt="Church community" width="1600" height="900" />
+    </section>
 
+    <!-- Flyers -->
+    <section class="flyer-grid" aria-label="Featured Flyers">
+      <a href="community.html" class="flyer-item">
+        <img src="Images/blood for blood 2025.jpg" alt="Join our community" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+      <a href="prayer.html" class="flyer-item">
+        <img src="Images/Church flyer.jpg" alt="Ask for prayer" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+      <a href="services.html" class="flyer-item">
+        <img src="Images/new dawn 2025.jpg" alt="Worship with us" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+      <a href="counselling.html" class="flyer-item">
+        <img src="Images/grace for exploit 2025.jpg" alt="Need counselling?" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+      <a href="events.html" class="flyer-item">
+        <img src="Images/he touched me 2025.jpg" alt="Upcoming events" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+      <a href="pastors.html" class="flyer-item">
+        <img src="Images/timelyhelp 2025.jpg" alt="Meet our pastors" loading="lazy" decoding="async" width="800" height="220" />
+      </a>
+    </section>
 
-<section class="connect-row">
-  <h2 class="connect-header">GET CONNECTED</h2>
-  <div class="connect-cards">
-    <a href="#" class="connect-card">
-      <img src="Images/Church flyer.jpg" alt="About Us" loading="lazy">
-    </a>
-    <a href="#" class="connect-card">
-      <img src="Images/thanksgiving.jpg" alt="Membership Class" loading="lazy">
-    </a>
-    <a href="#" class="connect-card">
-      <img src="Images/ebenezer 2025.jpg" alt="Join Faith-Miracle Community" loading="lazy">
-    </a>
-    <div class="connect-card">
-      <img src="Images/mighty in batle.jpg" alt="Flyer" loading="lazy">
+    <!-- Greatness / Community -->
+    <section class="greatness-section" aria-labelledby="nehemiah-title">
+      <div class="greatness-overlay">
+        <div class="greatness-content">
+          <h2 id="nehemiah-title">Join the Nehemiah’s Family!</h2>
+          <p>
+            Just as Nehemiah rose with courage to rebuild the walls of Jerusalem, we too are called to build lives of purpose, unity, and spiritual strength. The Nehemiah’s Family is more than a community—it’s a divine assignment.
+          </p>
+          <p>
+            We believe in the power of godly connections, the beauty of shared vision, and the strength of a loving spiritual family. Here, you'll find passionate believers walking together in faith, just as Nehemiah rallied his people to restore what was broken.
+          </p>
+          <p>
+            Join us to experience spiritual growth, divine restoration, and meaningful relationships. Together, we rise to build, to heal, and to fulfill destiny.
+          </p>
+          <a href="community.html" class="join-btn">Join Our Community</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section class="support-section" aria-labelledby="support-title">
+      <div class="support-content">
+        <h2 id="support-title">Need Counselling?</h2>
+        <p>Are you facing challenges, seeking guidance, or simply need someone to talk to? We are here for you.</p>
+        <p>Our dedicated team of counselors is available to provide confidential and compassionate support, free of charge.</p>
+        <a href="counselling.html" class="support-btn">Request Counselling</a>
+
+        <h3>Ask for Prayer</h3>
+        <p>We believe in the power of prayer. Share your request and let us stand with you in faith.</p>
+        <a href="prayer.html" class="support-btn">Submit Prayer Request</a>
+      </div>
+    </section>
+
+    <!-- Get Connected -->
+    <section class="connect-row" aria-labelledby="connect-title">
+      <h2 id="connect-title" class="connect-header">Get Connected</h2>
+      <div class="connect-cards">
+        <a href="about-us.html" class="connect-card"><img src="Images/Church flyer.jpg" alt="About us" loading="lazy" decoding="async" width="800" height="220" /></a>
+        <a href="membership.html" class="connect-card"><img src="Images/thanksgiving.jpg" alt="Membership class" loading="lazy" decoding="async" width="800" height="220" /></a>
+        <a href="community.html" class="connect-card"><img src="Images/ebenezer 2025.jpg" alt="Join Faith-Miracle community" loading="lazy" decoding="async" width="800" height="220" /></a>
+        <div class="connect-card"><img src="Images/mighty in batle.jpg" alt="Service flyer" loading="lazy" decoding="async" width="800" height="220" /></div>
+      </div>
+    </section>
+
+    <!-- Pastors -->
+    <section class="lead-pastor-section" aria-labelledby="pastors-title">
+      <div class="pastor-bg">
+        <div class="pastor-content">
+          <h2 id="pastors-title">Meet Our Global Lead Pastors</h2>
+          <p>
+            At the heart of <strong>Faith Miracle Assembly Church</strong> are our visionary leaders —
+            <strong>Pastor Sunday Oziegbe Favour</strong> and <strong>Pastor Blessing Favour</strong> —
+            who guide our global family with wisdom, grace, and unwavering faith.
+          </p>
+          <div>
+            <div>
+              <h3>Pastor Sunday Oziegbe Favour</h3>
+              <p>
+                A dynamic author, inspirational speaker, and expert in leadership and relationships.
+                His teachings empower individuals to lead boldly and live purposefully.
+              </p>
+            </div>
+            <div>
+              <h3>Pastor Blessing Favour</h3>
+              <p>
+                A celebrated publisher and finance strategist, known for her passion for women's empowerment.
+                She leads the transformative <strong>Made for More</strong> conference, inspiring women to embrace their full potential.
+              </p>
+            </div>
+          </div>
+          <p>
+            Together, they are supported by a dedicated team of pastors and ministers across the globe,
+            united in the mission to serve both God and humanity with passion and grace.
+          </p>
+          <a href="our-leadership.html" target="_blank" rel="noopener" class="learn-link">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© <span id="year"></span> Faith Miracle Assembly Church. All rights reserved.</p>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html">Attend Faith Miracle Assembly Online</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="https://faith-miracle-assembly.github.io/church-official-website/" target="_blank" rel="noopener">The Faith Miracle Assembly Church Location</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="contact.html">Contact Us</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="livestream.html" target="_blank" rel="noopener">Watch</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="expression.html">Locations</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="give.html">Give</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="careers.html">Careers</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="divider" aria-hidden="true">|</span>
+      <a href="terms.html">Terms and Conditions</a>
+    </nav>
+
+    <div class="social-icons" aria-label="Social links">
+      <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><img src="Images/twitter.webp" alt="Twitter" width="28" height="28" loading="lazy" decoding="async" /></a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn" width="28" height="28" loading="lazy" decoding="async" /></a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><img src="Images/facebook.webp" alt="Facebook" width="28" height="28" loading="lazy" decoding="async" /></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><img src="Images/instagram.webp" alt="Instagram" width="28" height="28" loading="lazy" decoding="async" /></a>
+      <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><img src="Images/icons8-youtube-48.png" alt="YouTube" width="28" height="28" loading="lazy" decoding="async" /></a>
     </div>
-  </div>
-</section>
+  </footer>
 
+  <!-- Scripts -->
+  <script defer>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<section class="lead-pastor-section">
-  <div class="pastor-bg">
-    <div class="pastor-content">
-     <section>
-  <h2>Meet Our Global Lead Pastors</h2>
-  <p>
-    At the heart of <strong>Faith Miracle Assembly Church</strong> are our visionary leaders —
-    <strong>Pastor Sunday Oziegbe Favour</strong> and <strong>Pastor Blessing Favour</strong> —
-    who guide our global family with wisdom, grace, and unwavering faith.
-  </p>
-  <div>
-    <div>
-      <h3>Pastor Sunday Oziegbe Favour</h3>
-      <p>
-        A dynamic author, inspirational speaker, and expert in leadership and relationships.
-        His teachings empower individuals to lead boldly and live purposefully.
-      </p>
-    </div>
-    <div>
-      <h3>Pastor Blessing Favour</h3>
-      <p>
-        A celebrated publisher and finance strategist, known for her passion for women's empowerment.
-        She leads the transformative <strong>Made for More</strong> conference, inspiring women to embrace their full potential.
-      </p>
-    </div>
-  </div>
-  <p>
-    Together, they are supported by a dedicated team of pastors and ministers across the globe,
-    united in the mission to serve both God and humanity with passion and grace.
-  </p>
-</section>
-      <a href="our-leadership.html" target="_blank" class="learn-link">Learn More</a>
-    </div>
-  </div>
-</section>
+    // Mobile menu logic with a11y states
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileClose');
 
- <footer class="site-footer">
-  <p>© 2025 Faith Miracle Assembly Church. All rights reserved.</p>
+    function openMenu(){
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden','false');
+      hamburger.setAttribute('aria-expanded','true');
+      closeBtn.focus();
+      document.body.style.overflow='hidden';
+    }
+    function closeMenu(){
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden','true');
+      hamburger.setAttribute('aria-expanded','false');
+      hamburger.focus();
+      document.body.style.overflow='';
+    }
 
-  <nav class="footer-nav">
-    <a href="index.html" target="_blank">Attend Faith Miracle Assembly Online</a>
-    <span class="divider">|</span>
-    <a href="https://faith-miracle-assembly.github.io/church-official-website/" target="_blank">The Faith Miracle Assembly Church Location</a>
-    <span class="divider">|</span>
-    <a href="contact.html" target="_blank">Contact Us</a>
-    <span class="divider">|</span>
-    <a href="livestream.html" target="_blank">Watch</a>
-    <span class="divider">|</span>
-    <a href="expression.html" target="_blank">Locations</a>
-    <span class="divider">|</span>
-    <a href="give.html" target="_blank">Give</a>
-    <span class="divider">|</span>
-    <a href="careers.html" target="_blank">Careers</a>
-  </nav>
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    drawer.addEventListener('click', (e)=>{ if(e.target === drawer) closeMenu(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && drawer.classList.contains('open')) closeMenu(); });
+  </script>
 
-  <div class="social-icons">
-    <a href="https://twitter.com" target="_blank"><img src="Images/twitter.webp" alt="Twitter" loading="lazy"></a>
-    <a href="https://linkedin.com" target="_blank"><img src="Images/icons8-linkedin-48.png" alt="LinkedIn" loading="lazy"></a>
-    <a href="https://facebook.com" target="_blank"><img src="Images/facebook.webp" alt="Facebook" loading="lazy"></a>
-    <a href="https://instagram.com" target="_blank"><img src="Images/instagram.webp" alt="Instagram" loading="lazy"></a>
-    <a href="https://youtube.com" target="_blank"><img src="Images/icons8-youtube-48.png" alt="YouTube" loading="lazy"></a>
-  </div>
-
-  <nav class="footer-nav">
-    <a href="#">Privacy Policy</a>
-    <span class="divider">|</span>
-    <a href="#">Terms and Conditions</a>
-  </nav>
-</footer>
-
-<!-- Performance: Load JavaScript with defer -->
-<script src="Scripts/fma.js" defer></script>
+  <!-- Existing site JS (deferred) -->
+  <script src="Scripts/fma.js" defer></script>
 </body>
 </html>
-
-
