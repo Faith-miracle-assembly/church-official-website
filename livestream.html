@@ -224,6 +224,31 @@ html, body {
 * {
   box-sizing: border-box;
 }
+/* Ensure content scales on mobile */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* Responsive text and spacing */
+@media (max-width: 768px) {
+  h1, h2, h3, p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+}
 
 </style>
 </head>
