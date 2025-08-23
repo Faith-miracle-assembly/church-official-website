@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faith Miracle Assembly – Get Connected</title>
+  <link rel="icon" href="Images/FMA LOGO.png" type="image/png">
+  <style>
+    /* ===== Reset & Base Styles ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9fb; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { margin-bottom: .5em; }
+    p { margin-bottom: 1em; }
+
+    /* ===== Layout ===== */
+    header { background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000; }
+    header .container { max-width: 1100px; margin: 0 auto; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
+    header img { height: 40px; border-radius: 6px; }
+
+    /* ===== Nav ===== */
+    nav ul { display: flex; list-style: none; gap: 1rem; }
+    nav ul li { font-weight: 600; }
+    .hamburger, .close-btn { display: none; cursor: pointer; font-size: 1.5rem; }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      nav ul { 
+        position: fixed; 
+        top: 0; 
+        right: -100%; 
+        width: 70%; 
+        height: 100%; 
+        background: #fff; 
+        flex-direction: column; 
+        padding: 2rem; 
+        gap: 1.5rem;
+        transition: right .3s ease-in-out;
+        box-shadow: -2px 0 8px rgba(0,0,0,.1);
+      }
+      nav ul.active { right: 0; }
+      .hamburger { display: block; }
+      .close-btn { display: block; align-self: flex-end; margin-bottom: 2rem; }
+    }
+
+    main { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
+    footer { background: #222; color: #ddd; padding: 2rem 1rem; text-align: center; }
+    footer h3 { color: #fff; margin-bottom: .5rem; }
+    footer p, footer a { font-size: .9rem; color: #ccc; }
+    footer a:hover { color: #fff; }
+
+    /* ===== Tabs ===== */
+    .tabs { display: flex; border-bottom: 2px solid #eee; margin-bottom: 1.5rem; }
+    .tab { flex: 1; padding: 1rem; text-align: center; cursor: pointer; font-weight: 600; background: #f1f1f6; border: 1px solid #ddd; border-bottom: none; transition: background .3s; }
+    .tab.active { background: #fff; color: #0073e6; border-top: 3px solid #0073e6; }
+    .tab:not(.active):hover { background: #e9e9f1; }
+
+    .tab-content { display: none; background: #fff; padding: 2rem; border: 1px solid #ddd; border-radius: 0 0 6px 6px; }
+    .tab-content.active { display: block; }
+
+    /* ===== Forms ===== */
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    label { font-weight: 600; margin-bottom: .3rem; }
+    input, select, textarea { width: 100%; padding: .6rem; border: 1px solid #ccc; border-radius: 6px; }
+    textarea { resize: vertical; min-height: 100px; }
+    .consent { display: flex; align-items: flex-start; gap: .5rem; font-size: .9rem; }
+    .error { color: #c00; font-size: .85rem; margin-top: -.5rem; }
+    .success { background: #e6f9e6; color: #1a7a1a; padding: .8rem; border-radius: 6px; font-size: .9rem; }
+
+    button { padding: .7rem 1.5rem; background: #0073e6; color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background .3s; }
+    button:hover { background: #005bb5; }
+    button.secondary { background: #f1f1f1; color: #333; }
+    button.secondary:hover { background: #ddd; }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: .8rem;">
+        <img src="Images/FMA-LOGO.png" alt="FMA Logo">
+        <div>
+          <h1 style="font-size: 1.2rem;">Faith Miracle Assembly</h1>
+          <p style="font-size: .8rem; color: #555;">Grace House • Welcome Home</p>
+        </div>
+      </div>
+      <nav>
+        <div class="hamburger">☰</div>
+        <ul>
+          <li class="close-btn">✖</li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="livestream.html">LiveStream</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h2 id="main-heading">Get Connected</h2>
+    <p id="main-subtext">Become a member, Request counselling, Submit a prayer request.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="membership">Become a Member</div>
+      <div class="tab" data-tab="counselling">Request Counselling</div>
+      <div class="tab" data-tab="prayer">Prayer Request</div>
+    </div>
+
+    <!-- Membership -->
+    <div class="tab-content active" id="membership">
+      <form method="POST" action="membership.php">
+        <label for="firstName">First Name *</label>
+        <input type="text" name="firstName" id="firstName" required>
+        <label for="lastName">Last Name *</label>
+        <input type="text" name="lastName" id="lastName" required>
+        <label for="email">Email *</label>
+        <input type="email" name="email" id="email" required>
+        <label for="phone">Phone *</label>
+        <input type="tel" name="phone" id="phone" required>
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address">
+        <label for="dob">Date of Birth</label>
+        <input type="date" name="dob" id="dob">
+        <label for="marital">Marital Status</label>
+        <select name="marital" id="marital">
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+          <option value="engaged">Engaged</option>
+          <option value="widowed">Widowed</option>
+        </select>
+        <div class="consent">
+          <input type="checkbox" id="m-consent" name="consent" required>
+          <label for="m-consent">I consent to Faith Miracle Assembly storing and using my information *</label>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="submit">Submit Application</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Counselling -->
+    <div class="tab-content" id="counselling">
+      <form method="POST" action="counselling.php">
+        <label for="fullName">Full Name *</label>
+        <input type="text" name="fullName" id="fullName" required>
+        <label for="c-email">Email *</label>
+        <input type="email" name="email" id="c-email" required>
+        <label for="c-phone">Phone *</label>
+        <input type="tel" name="phone" id="c-phone" required>
+        <label for="topic">Topic</label>
+        <select name="topic" id="topic">
+          <option value="marriage">Marriage</option>
+          <option value="family">Family</option>
+          <option value="financial">Financial</option>
+          <option value="spiritual">Spiritual</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="summary">Brief Summary *</label>
+        <textarea name="summary" id="summary" required></textarea>
+        <div class="consent">
+          <input type="checkbox" id="c-consent" name="consent" required>
+          <label for="c-consent">I consent to FMA using my information to arrange counselling *</label>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Prayer -->
+    <div class="tab-content" id="prayer">
+      <form method="POST" action="prayer.php">
+        <label for="p-name">Name (optional)</label>
+        <input type="text" name="name" id="p-name">
+        <label for="p-email">Email (optional)</label>
+        <input type="email" name="email" id="p-email">
+        <label for="p-phone">Phone (optional)</label>
+        <input type="tel" name="phone" id="p-phone">
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option value="healing">Healing</option>
+          <option value="breakthrough">Breakthrough</option>
+          <option value="family">Family</option>
+          <option value="deliverance">Deliverance</option>
+          <option value="thanksgiving">Thanksgiving</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="request">Your Prayer Request *</label>
+        <textarea name="request" id="request" required></textarea>
+        <div class="consent">
+          <input type="checkbox" id="subscribe" name="subscribe" checked>
+          <label for="subscribe">Email me encouraging updates</label>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="submit">Send Request</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Faith Miracle Assembly</h3>
+    <p>Grace House</p>
+    <p>© <script>document.write(new Date().getFullYear())</script> Faith Miracle Assembly. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Tabs with URL support
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    const mainHeading = document.getElementById('main-heading');
+    const mainSubtext = document.getElementById('main-subtext');
+
+    function openTab(tabName) {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+      document.getElementById(tabName).classList.add('active');
+      // Dynamic heading text
+      if(tabName === "prayer"){
+        mainHeading.textContent = "Submit a Prayer Request";
+        mainSubtext.textContent = "Let us stand in faith with you through prayer.";
+      } else if(tabName === "counselling"){
+        mainHeading.textContent = "Request Counselling";
+        mainSubtext.textContent = "We are here to support and guide you.";
+      } else {
+        mainHeading.textContent = "Become a Member";
+        mainSubtext.textContent = "Join our family and grow with us.";
+      }
+    }
+
+    // Detect hash
+    function handleHash() {
+      const hash = window.location.hash.replace("#","");
+      if(hash) openTab(hash);
+    }
+    window.addEventListener("hashchange", handleHash);
+    handleHash();
+
+    // Tab click
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabName = tab.dataset.tab;
+        history.pushState(null, null, "#" + tabName);
+        openTab(tabName);
+      });
+    });
+
+    // Auto-reset forms on submit or refresh
+    document.querySelectorAll("form").forEach(form => {
+      form.addEventListener("submit", () => setTimeout(() => form.reset(), 100));
+      window.addEventListener("pageshow", () => form.reset());
+    });
+
+    // Hamburger
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+    const closeBtn = document.querySelector(".close-btn");
+
+    hamburger.addEventListener("click", () => navMenu.classList.add("active"));
+    closeBtn.addEventListener("click", () => navMenu.classList.remove("active"));
+  </script>
+</body>
+</html>
