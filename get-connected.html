@@ -143,8 +143,10 @@
     <!-- Counselling -->
     <div class="tab-content" id="counselling">
       <form method="POST" action="counselling.php">
-        <label for="fullName">Full Name *</label>
-        <input type="text" name="fullName" id="fullName" required>
+        <label for="firstName">First Name *</label>
+        <input type="text" name="firstName" id="firstName" required>
+         <label for="lastName">Last Name *</label>
+        <input type="text" name="lastName" id="lastName" required>
         <label for="c-email">Email *</label>
         <input type="email" name="email" id="c-email" required>
         <label for="c-phone">Phone *</label>
@@ -172,12 +174,14 @@
     <!-- Prayer -->
     <div class="tab-content" id="prayer">
       <form method="POST" action="prayer.php">
-        <label for="p-name">Name (optional)</label>
-        <input type="text" name="name" id="p-name">
+         <label for="firstName">First Name *</label>
+        <input type="text" name="firstName" id="firstName" required>
+         <label for="lastName">Last Name *</label>
+        <input type="text" name="lastName" id="lastName" required>
         <label for="p-email">Email (optional)</label>
         <input type="email" name="email" id="p-email">
-        <label for="p-phone">Phone (optional)</label>
-        <input type="tel" name="phone" id="p-phone">
+        <label for="c-phone">Phone *</label>
+        <input type="tel" name="phone" id="c-phone" required>
         <label for="category">Category</label>
         <select name="category" id="category">
           <option value="healing">Healing</option>
