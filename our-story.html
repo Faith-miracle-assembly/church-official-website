@@ -415,6 +415,96 @@
         transform: translateY(0);
       }
     }
+    /* Hide default dropdown */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+
+/* Fullscreen Overlay Menu */
+.menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(1, 20, 31, 0.97);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 2000;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Overlay header */
+.menu-overlay header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+}
+
+.menu-overlay header img {
+  height: 40px;
+}
+
+.menu-overlay header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.menu-overlay header button {
+  position: absolute;
+  top: 10px;
+  right: -40px;   /* shifted more right */
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Overlay nav links */
+.menu-overlay nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;   /* extra spacing */
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.menu-overlay nav a {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.menu-overlay.active nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-overlay.active nav a:nth-child(1) { transition-delay: 0.1s; }
+.menu-overlay.active nav a:nth-child(2) { transition-delay: 0.2s; }
+.menu-overlay.active nav a:nth-child(3) { transition-delay: 0.3s; }
+.menu-overlay.active nav a:nth-child(4) { transition-delay: 0.4s; }
+.menu-overlay.active nav a:nth-child(5) { transition-delay: 0.5s; }
+.menu-overlay.active nav a:nth-child(6) { transition-delay: 0.6s; }
+
   </style>
 </head>
 <body>
@@ -434,11 +524,28 @@
         <li><a href="#">Media</a></li>
         <li><a href="about-us.html">About Us</a></li>
       </ul>
-<button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-      </button>
+<button class="mobile-menu-btn" onclick="toggleMenu()">
+  <i class="fas fa-bars"></i>
+</button>
+
     </div>
   </nav>
+<!-- Fullscreen Mobile Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay">
+  <header>
+    <img src="Images/FMA LOGO.jpg" alt="Faith Miracle Assembly Logo">
+    <h2>Faith Miracle Assembly</h2>
+    <button onclick="toggleMenu()">✖</button>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="livestream.html">Livestream</a>
+    <a href="give.html">Give</a>
+    <a href="expression.html">Locations</a>
+    <a href="#">Media</a>
+    <a href="about-us.html">About Us</a>
+  </nav>
+</div>
 
   <!-- Header -->
   <header class="header">
@@ -569,10 +676,17 @@
 
   <script>
     // Mobile Menu Toggle
-    function toggleMobileMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
-    }
+    // Toggle fullscreen overlay
+function toggleMenu() {
+  document.getElementById('menuOverlay').classList.toggle('active');
+}
+
+// Close overlay when clicking a link
+document.querySelectorAll('#menuOverlay nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuOverlay').classList.remove('active');
+  });
+});
 
 
     // Intersection Observer for animations
