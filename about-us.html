@@ -465,6 +465,40 @@
     z-index: 2100;
   }
 }
+/* Fix service cards on mobile */
+@media (max-width: 768px) {
+  .service-cards {
+    display: grid;
+    grid-template-columns: 1fr;  /* stack cards vertically */
+    gap: 1.5rem;                 /* add space between cards */
+  }
+
+  .service-card {
+    padding: 1.2rem;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;  /* scale down headings slightly */
+  }
+
+  .service-card p {
+    font-size: 0.95rem; /* scale down description */
+    line-height: 1.5;
+  }
+
+  .service-card .card-image {
+    font-size: 2rem; /* make icons smaller */
+    margin-bottom: 0.8rem;
+  }
+
+  .learn-more-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
 
   </style>
 </head>
